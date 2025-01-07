@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:prueba_final_flutter/screens/detail_book_page.dart';
-import 'package:prueba_final_flutter/screens/home_page.dart';
 import 'package:prueba_final_flutter/screens/more_book_page.dart';
 
 class BottomNavbar extends StatefulWidget {
@@ -13,16 +12,22 @@ class BottomNavbar extends StatefulWidget {
 class _BottomNavbarState extends State<BottomNavbar> {
   int selectedIndex = 0;
 
-  final List<Widget> _pages = [
-    HomePage(),
-    DetailBookPage(),
-    MoreBookPage(),
-  ];
-
   void onItemTapped(int index) {
-    setState(() {
-      selectedIndex = index;
-    });
+    if (index == 1) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const DetailBookPage()),
+      );
+    } else if (index == 2) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const MoreBookPage()),
+      );
+    } else {
+      setState(() {
+        selectedIndex = index;
+      });
+    }
   }
 
   @override

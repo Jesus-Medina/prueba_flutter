@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:prueba_final_flutter/screens/cart_page.dart';
 import 'package:prueba_final_flutter/screens/home_page.dart';
-import 'package:prueba_final_flutter/screens/detail_book_page.dart';
-import 'package:prueba_final_flutter/screens/more_book_page.dart';
 
 void main() {
   runApp(const EcommerceApp());

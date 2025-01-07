@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:prueba_final_flutter/screens/detail_book_page.dart';
 
 class CustomScroll extends StatelessWidget {
   const CustomScroll({super.key});
@@ -11,23 +12,23 @@ class CustomScroll extends StatelessWidget {
         children: [
           SizedBox(width: 20),
           LayoutBuilder(
-            builder: (context, constraints) => builCard(constraints),
+            builder: (context, constraints) => builCard(context, constraints),
           ),
           SizedBox(width: 20),
           LayoutBuilder(
-            builder: (context, constraints) => builCard(constraints),
+            builder: (context, constraints) => builCard(context, constraints),
           ),
           SizedBox(width: 20),
           LayoutBuilder(
-            builder: (context, constraints) => builCard(constraints),
+            builder: (context, constraints) => builCard(context, constraints),
           ),
           SizedBox(width: 20),
           LayoutBuilder(
-            builder: (context, constraints) => builCard(constraints),
+            builder: (context, constraints) => builCard(context, constraints),
           ),
           SizedBox(width: 20),
           LayoutBuilder(
-            builder: (context, constraints) => builCard(constraints),
+            builder: (context, constraints) => builCard(context, constraints),
           ),
           SizedBox(width: 20),
         ],
@@ -35,39 +36,47 @@ class CustomScroll extends StatelessWidget {
     );
   }
 
-  Widget builCard(BoxConstraints constraints) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        SizedBox(height: 10),
-        Container(
-          decoration: BoxDecoration(
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black45, // Color de la sombra
-                blurRadius: 1, // Desenfoque de la sombra
-                offset: Offset(0, 0), // Desplazamiento horizontal y vertical
-              ),
-            ],
+  Widget builCard(BuildContext context, BoxConstraints constraints) {
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const DetailBookPage()),
+        );
+      },
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SizedBox(height: 10),
+          Container(
+            decoration: BoxDecoration(
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black45,
+                  blurRadius: 1,
+                  offset: Offset(0, 0),
+                ),
+              ],
+            ),
+            child: Image.asset(
+              "assets/images/book.jpg",
+              fit: BoxFit.cover,
+              height: constraints.maxHeight * 0.7,
+            ),
           ),
-          child: Image.asset(
-            "assets/images/book.jpg",
-            fit: BoxFit.cover,
-            height: constraints.maxHeight * 0.7,
+          SizedBox(
+            height: 10,
           ),
-        ),
-        SizedBox(
-          height: 10,
-        ),
-        Text(
-          "by Erich From",
-          style: TextStyle(color: Colors.grey[700], fontSize: 11),
-        ),
-        Text(
-          "El Arte De Amar",
-          style: TextStyle(color: Colors.black, fontSize: 15),
-        ),
-      ],
+          Text(
+            "by Erich From",
+            style: TextStyle(color: Colors.grey[700], fontSize: 11),
+          ),
+          Text(
+            "El Arte De Amar",
+            style: TextStyle(color: Colors.black, fontSize: 15),
+          ),
+        ],
+      ),
     );
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:prueba_final_flutter/screens/more_book_page.dart';
 
 class MoreBooks extends StatelessWidget {
   const MoreBooks({super.key});
@@ -16,10 +17,20 @@ class MoreBooks extends StatelessWidget {
               fontSize: 12,
             ),
           ),
-          Text(
-            "Ver más",
-            style: TextStyle(
-              fontSize: 14,
+          TextButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const MoreBookPage()),
+              );
+            },
+            child: Text(
+              "Ver más",
+              style: TextStyle(
+                  fontSize: 14,
+                  decoration: TextDecoration.none,
+                  color: Colors.black,
+                  fontWeight: FontWeight.w400),
             ),
           ),
         ],

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:prueba_final_flutter/screens/cart_page.dart';
 
 class Header extends StatelessWidget {
   const Header({super.key});
@@ -18,7 +19,7 @@ class Header extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   _buildMenuIcon(constraints),
-                  _buildHeaderRightSection(constraints),
+                  _buildHeaderRightSection(constraints, context),
                 ],
               ),
             );
@@ -37,14 +38,22 @@ class Header extends StatelessWidget {
     );
   }
 
-  Widget _buildHeaderRightSection(BoxConstraints constraints) {
+  Widget _buildHeaderRightSection(BoxConstraints constraints, context) {
     return Row(
       children: [
-        Image.asset(
-          "assets/images/shopping_bag.png",
-          height: constraints.maxHeight * 0.5,
-          width: constraints.maxHeight * 0.5,
-          fit: BoxFit.cover,
+        GestureDetector(
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const CartPage()),
+            );
+          },
+          child: Image.asset(
+            "assets/images/shopping_bag.png",
+            height: constraints.maxHeight * 0.5,
+            width: constraints.maxHeight * 0.5,
+            fit: BoxFit.cover,
+          ),
         ),
         const SizedBox(width: 12),
         _buildProfileSection(constraints),
