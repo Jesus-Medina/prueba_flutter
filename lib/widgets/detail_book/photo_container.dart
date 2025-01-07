@@ -9,8 +9,8 @@ class PhotoContainer extends StatelessWidget {
       color: Colors.grey[50],
       child: FractionallySizedBox(
         alignment: Alignment(0, 0),
-        heightFactor: 0.8,
-        widthFactor: 0.5,
+        heightFactor: 0.7,
+        widthFactor: 0.4,
         child: Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),

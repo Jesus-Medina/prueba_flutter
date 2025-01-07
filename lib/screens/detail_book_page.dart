@@ -19,8 +19,8 @@ class DetailBookPage extends StatelessWidget {
 
     return Column(
       children: [
-        _buildSection(screenSize, 0.11, DetailCustomAppBar()),
-        _buildSection(screenSize, 0.42, PhotoContainer()),
+        _buildSection(screenSize, 0.113, DetailCustomAppBar()),
+        _buildSection(screenSize, 0.40, PhotoContainer()),
         _buildSection(screenSize, 0.47, BookDescription()),
       ],
     );

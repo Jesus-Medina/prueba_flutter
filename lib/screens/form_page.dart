@@ -4,8 +4,8 @@ import 'package:prueba_final_flutter/widgets/cart_page/cart_custom_appbar.dart';
 import 'package:prueba_final_flutter/widgets/cart_page/cart_listview.dart';
 import 'package:prueba_final_flutter/widgets/cart_page/cart_total.dart';
 
-class CartPage extends StatelessWidget {
-  const CartPage({super.key});
+class FormPage extends StatelessWidget {
+  const FormPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -20,10 +20,7 @@ class CartPage extends StatelessWidget {
 
     return Column(
       children: [
-        _buildSection(screenSize, 0.113, CartCustomAppbar()),
-        _buildSection(screenSize, 0.04, CartTotal()),
-        _buildSection(screenSize, 0.69, CartListview()),
-        _buildSection(screenSize, 0.15, CartCheckoutButton()),
+        _buildSection(screenSize, 1, Container(color: Colors.red)),
       ],
     );
   }

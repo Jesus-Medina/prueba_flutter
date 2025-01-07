@@ -18,8 +18,8 @@ class MoreBookPage extends StatelessWidget {
 
     return Column(
       children: [
-        _buildSection(screenSize, 0.15, MoreCustomAppbar()),
-        _buildSection(screenSize, 0.85, BookList()),
+        _buildSection(screenSize, 0.113, MoreCustomAppbar()),
+        _buildSection(screenSize, 0.88, BookList()),
       ],
     );
   }

@@ -7,7 +7,7 @@ class Header extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FractionallySizedBox(
-      alignment: const Alignment(0, 0.5),
+      alignment: const Alignment(0, 0.45),
       widthFactor: 0.95,
       heightFactor: 0.5,
       child: SizedBox(

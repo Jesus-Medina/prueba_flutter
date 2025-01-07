@@ -17,7 +17,7 @@ class CartCustomAppbar extends StatelessWidget {
               icon: Icon(Icons.arrow_back),
               onPressed: () => Navigator.pop(context),
             ),
-            SizedBox(width: 34),
+            SizedBox(width: 24),
             Expanded(
               child: Text(
                 "Carrito de compras",

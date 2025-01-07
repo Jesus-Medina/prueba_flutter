@@ -5,15 +5,18 @@ class CartListview extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FractionallySizedBox(
-      alignment: Alignment(0, 0),
-      heightFactor: 1,
-      widthFactor: 1,
-      child: ListView.builder(
-        itemCount: 10,
-        itemBuilder: (BuildContext context, int index) {
-          return _buildItem(context, index);
-        },
+    return Container(
+      color: Colors.grey[50],
+      child: FractionallySizedBox(
+        alignment: Alignment(0, 0),
+        heightFactor: 1,
+        widthFactor: 1,
+        child: ListView.builder(
+          itemCount: 10,
+          itemBuilder: (BuildContext context, int index) {
+            return _buildItem(context, index);
+          },
+        ),
       ),
     );
   }
@@ -21,7 +24,7 @@ class CartListview extends StatelessWidget {
 
 Widget _buildItem(BuildContext context, int index) {
   return Container(
-    margin: EdgeInsets.only(bottom: 10),
+    margin: EdgeInsets.all(10),
     padding: EdgeInsets.all(10),
     decoration: BoxDecoration(
       color: Colors.white,
@@ -29,7 +32,7 @@ Widget _buildItem(BuildContext context, int index) {
       boxShadow: [
         BoxShadow(
           color: Colors.black12,
-          blurRadius: 10,
+          blurRadius: 5,
           spreadRadius: 1,
         ),
       ],
@@ -39,8 +42,8 @@ Widget _buildItem(BuildContext context, int index) {
         Icon(Icons.delete),
         SizedBox(width: 10),
         Container(
-          height: 100,
-          width: 100,
+          height: 80,
+          width: 70,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
             image: DecorationImage(
@@ -56,22 +59,23 @@ Widget _buildItem(BuildContext context, int index) {
             Text(
               "Book Title",
               style: TextStyle(
-                fontSize: 16,
+                fontSize: 14,
                 fontWeight: FontWeight.w500,
               ),
             ),
             Text(
               "Author",
               style: TextStyle(
-                fontSize: 14,
+                fontSize: 12,
                 fontWeight: FontWeight.w400,
               ),
             ),
+            SizedBox(height: 4),
             Container(
               color: Colors.grey[200],
               padding: EdgeInsets.symmetric(horizontal: 6),
-              width: 85,
-              height: 35,
+              width: 65,
+              height: 25,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 mainAxisSize: MainAxisSize.max,
@@ -99,15 +103,15 @@ Widget _buildItem(BuildContext context, int index) {
             ),
           ],
         ),
-        Container(
-          height: 100,
-          width: 100,
-          alignment: Alignment(1, 0.6),
-          child: Text(
-            "\$20.00",
-            style: TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.w500,
+        Expanded(
+          child: Container(
+            alignment: Alignment(0.8, 0),
+            child: Text(
+              "\$20.00",
+              style: TextStyle(
+                fontSize: 15,
+                fontWeight: FontWeight.w500,
+              ),
             ),
           ),
         )
