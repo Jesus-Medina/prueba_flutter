@@ -26,8 +26,8 @@ class HomePage extends StatelessWidget {
         _buildSection(screenSize, 0.10, CustomSearchBar()),
         _buildSection(screenSize, 0.05, MoreBooks()),
         _buildSection(screenSize, 0.33, CustomScroll()),
-        _buildSection(screenSize, 0.24, ContinueReading()),
-        _buildSection(screenSize, 0.13, BottomNavbar()),
+        _buildSection(screenSize, 0.25, ContinueReading()),
+        _buildSection(screenSize, 0.12, BottomNavbar()),
       ],
     );
   }

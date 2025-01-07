@@ -19,7 +19,7 @@ class EcommerceApp extends StatelessWidget {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
       title: "Prueba Final Flutter",
-      home: MoreBookPage(),
+      home: HomePage(),
     );
   }
 }
