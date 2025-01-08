@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:prueba_final_flutter/screens/bloc/ecommerce_bloc.dart';
 import 'package:prueba_final_flutter/screens/home_page.dart';
 
 void main() {
@@ -13,10 +15,13 @@ class EcommerceApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: "Prueba Final Flutter",
-      home: HomePage(),
+    return BlocProvider(
+      create: (context) => EcommerceBloc(),
+      child: const MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: "Prueba Final Flutter",
+        home: HomePage(),
+      ),
     );
   }
 }

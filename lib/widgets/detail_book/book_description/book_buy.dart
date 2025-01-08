@@ -49,24 +49,30 @@ class BookBuy extends StatelessWidget {
                     width: constraints.maxWidth *
                         0.35, // Esto hace que tome todo el ancho disponible
                     height: 50,
-                    child: ElevatedButton(
-                      onPressed: () {
-                        // Aquí va tu función cuando se presione el botón
+                    child: GestureDetector(
+                      onTap: () {
+                        // BLOC (evento) => productID
                       },
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor:
-                            Color(0xFFFF7052), // Color naranja del botón
-                        shape: RoundedRectangleBorder(
-                          borderRadius:
-                              BorderRadius.circular(8), // Bordes redondeados
+                      child: ElevatedButton(
+                        onPressed: () {
+                          // Aquí va tu función cuando se presione el botón
+                        },
+                        style: ElevatedButton.styleFrom(
+                          
+                          backgroundColor:
+                              Color(0xFFFF7052), // Color naranja del botón
+                          shape: RoundedRectangleBorder(
+                            borderRadius:
+                                BorderRadius.circular(8), // Bordes redondeados
+                          ),
                         ),
-                      ),
-                      child: const Text(
-                        'Add to Cart',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 13,
-                          fontWeight: FontWeight.w500,
+                        child: const Text(
+                          'Add to Cart',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 13,
+                            fontWeight: FontWeight.w500,
+                          ),
                         ),
                       ),
                     ),

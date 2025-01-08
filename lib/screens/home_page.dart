@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:prueba_final_flutter/screens/bloc/ecommerce_bloc.dart';
 import 'package:prueba_final_flutter/widgets/home_page/bottom_navbar.dart';
 import 'package:prueba_final_flutter/widgets/home_page/continue_reading.dart';
 import 'package:prueba_final_flutter/widgets/home_page/custom_scroll.dart';
@@ -13,7 +15,10 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: _buildContentSections(context),
+      body: BlocProvider.value(
+        value: context.read<EcommerceBloc>()..add(LoadProductsEvent()),
+        child: _buildContentSections(context),
+      ),
     );
   }
 
@@ -27,7 +32,7 @@ class HomePage extends StatelessWidget {
         _buildSection(screenSize, 0.05, MoreBooks()),
         _buildSection(screenSize, 0.33, CustomScroll()),
         _buildSection(screenSize, 0.25, ContinueReading()),
-        _buildSection(screenSize, 0.12, BottomNavbar()),
+        _buildSection(screenSize, 0.11, BottomNavbar()),
       ],
     );
   }
