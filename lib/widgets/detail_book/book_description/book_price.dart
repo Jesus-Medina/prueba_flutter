@@ -49,11 +49,16 @@ class BookPrice extends StatelessWidget {
                         color: Colors.green,
                       ),
                     ),
-                    Text(
-                      product.title,
-                      style: TextStyle(
-                        fontSize: 22,
-                        fontWeight: FontWeight.w500,
+                    FractionallySizedBox(
+                      widthFactor: 0.8,
+                      child: FittedBox(
+                        child: Text(
+                          product.title,
+                          style: TextStyle(
+                            fontSize: 22,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
                       ),
                     ),
                     Text(
