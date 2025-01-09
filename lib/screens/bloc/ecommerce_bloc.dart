@@ -48,16 +48,22 @@ class EcommerceBloc extends Bloc<EcommerceEvent, EcommerceState> {
     final List<ProductModel> updateCart;
 
     if (productExists) {
-      // Si existe, solo actualiza la cantidad
+      // Si existe, actualiza sumando la nueva cantidad
       updateCart = state.cart.map((product) {
         if (product.id == event.product.id) {
-          return product.copyWith(quantity: product.quantity + 1);
+          return product.copyWith(
+              quantity: product.quantity +
+                  event.product.quantity // Suma la nueva cantidad
+              );
         }
         return product;
       }).toList();
     } else {
-      // Si no existe, agrega el producto nuevo con cantidad 1
-      updateCart = [...state.cart, event.product.copyWith(quantity: 1)];
+      // Si no existe, agrega el producto con la cantidad seleccionada
+      updateCart = [
+        ...state.cart,
+        event.product
+      ]; // Ya no necesitas copyWith porque el producto ya viene con la cantidad
     }
 
     emit(state.copyWith(cart: updateCart));

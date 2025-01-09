@@ -22,7 +22,7 @@ class ProductModel extends Equatable {
     required this.rating,
     required this.pages,
     required this.language,
-    this.quantity = 1,
+    this.quantity = 0,
   });
 
   ProductModel copyWith({

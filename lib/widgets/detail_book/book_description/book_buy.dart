@@ -3,13 +3,34 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:prueba_final_flutter/model/product_model.dart';
 import 'package:prueba_final_flutter/screens/bloc/ecommerce_bloc.dart';
 
-class BookBuy extends StatelessWidget {
+class BookBuy extends StatefulWidget {
   final ProductModel product;
 
   const BookBuy({
     super.key,
     required this.product,
   });
+
+  @override
+  State<BookBuy> createState() => _BookBuyState();
+}
+
+class _BookBuyState extends State<BookBuy> {
+  int quantityy = 1; // Estado local para la cantidad
+
+  void _incrementQuantity() {
+    setState(() {
+      quantityy++;
+    });
+  }
+
+  void _decrementQuantity() {
+    if (quantityy > 1) {
+      setState(() {
+        quantityy--;
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -37,16 +58,22 @@ class BookBuy extends StatelessWidget {
                     color: Colors.grey[300],
                     thickness: 1,
                   ),
-                  const Icon(Icons.remove),
-                  const Text(
-                    "1",
+                  GestureDetector(
+                    onTap: _decrementQuantity,
+                    child: const Icon(Icons.remove),
+                  ),
+                  Text(
+                    quantityy.toString(),
                     textAlign: TextAlign.center,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 15,
                       color: Colors.teal,
                     ),
                   ),
-                  const Icon(Icons.add),
+                  GestureDetector(
+                    onTap: _incrementQuantity,
+                    child: const Icon(Icons.add),
+                  ),
                 ],
               ),
             ),
@@ -59,7 +86,11 @@ class BookBuy extends StatelessWidget {
                   child: ElevatedButton(
                     onPressed: () {
                       context.read<EcommerceBloc>().add(
-                            AddToCartProductsEvent(product: product),
+                            AddToCartProductsEvent(
+                              product: widget.product.copyWith(
+                                quantity: quantityy,
+                              ),
+                            ),
                           );
                     },
                     style: ElevatedButton.styleFrom(
