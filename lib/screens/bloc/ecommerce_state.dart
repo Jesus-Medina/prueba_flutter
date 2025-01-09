@@ -21,10 +21,10 @@ class EcommerceState extends Equatable {
   });
 
   factory EcommerceState.initial() {
-    return EcommerceState(
-      products: List<ProductModel>.empty(),
-      cart: List<ProductModel>.empty(),
-      favorites: List<ProductModel>.empty(),
+    return const EcommerceState(
+      products: [],
+      cart: [],
+      favorites: [],
       homeScreenState: HomeScreenState.none,
     );
   }

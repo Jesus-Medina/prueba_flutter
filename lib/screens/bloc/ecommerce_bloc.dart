@@ -41,11 +41,28 @@ class EcommerceBloc extends Bloc<EcommerceEvent, EcommerceState> {
 
   void _addToCartProductsEvent(
       AddToCartProductsEvent event, Emitter<EcommerceState> emit) {
-    final List<ProductModel> newCart = [];
+    // Verifica si el producto ya existe en el carrito
+    bool productExists =
+        state.cart.any((product) => product.id == event.product.id);
 
-    newCart.add(event.product);
+    final List<ProductModel> updateCart;
 
-    emit(state.copyWith(cart: newCart));
+    if (productExists) {
+      // Si existe, solo actualiza la cantidad
+      updateCart = state.cart.map((product) {
+        if (product.id == event.product.id) {
+          return product.copyWith(quantity: product.quantity + 1);
+        }
+        return product;
+      }).toList();
+    } else {
+      // Si no existe, agrega el producto nuevo con cantidad 1
+      updateCart = [...state.cart, event.product.copyWith(quantity: 1)];
+    }
+
+    emit(state.copyWith(cart: updateCart));
+
+    print("Cart: ${state.cart}");
   }
 
   void _updateCartQuantityEvent(

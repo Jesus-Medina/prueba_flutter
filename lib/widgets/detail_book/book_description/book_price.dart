@@ -39,7 +39,7 @@ class BookPrice extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        product.price.toString(),
+                        "\$${product.price.toString()}",
                         style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.w500,
