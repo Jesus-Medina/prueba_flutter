@@ -96,20 +96,28 @@ class ContinueReading extends StatelessWidget {
                       ],
                     ),
                   ),
-                  Container(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 12, vertical: 14),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(50),
-                    ),
-                    child: const Text(
-                      '65%',
-                      style: TextStyle(
-                        color: Colors.deepOrangeAccent,
-                        fontSize: 12,
-                        fontWeight: FontWeight.bold,
-                      ),
+                  SizedBox(
+                    width: 45,
+                    height: 45,
+                    child: Stack(
+                      alignment: Alignment.center,
+                      children: [
+                        CircularProgressIndicator(
+                          value: 0.65, // 65%
+                          backgroundColor: Colors.grey.withOpacity(0.2),
+                          valueColor: const AlwaysStoppedAnimation<Color>(
+                              Colors.deepOrange),
+                          strokeWidth: 3,
+                        ),
+                        Text(
+                          '65%',
+                          style: TextStyle(
+                            color: Colors.deepOrangeAccent,
+                            fontSize: 12,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 ],
