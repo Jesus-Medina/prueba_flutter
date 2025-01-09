@@ -15,8 +15,16 @@ class AddToCartProductsEvent extends EcommerceEvent {
   const AddToCartProductsEvent({required this.product});
 }
 
-class UpdateCartQuantityEvent extends EcommerceEvent {}
+class UpdateCartQuantityEvent extends EcommerceEvent {
+  final ProductModel product;
 
-class RemoveCartItemEvent extends EcommerceEvent {}
+  const UpdateCartQuantityEvent({required this.product});
+}
+
+class RemoveCartItemEvent extends EcommerceEvent {
+  final ProductModel product;
+
+  const RemoveCartItemEvent({required this.product});
+}
 
 class AddToFavoritesProductsEvent extends EcommerceEvent {}

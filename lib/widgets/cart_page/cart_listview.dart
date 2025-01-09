@@ -51,7 +51,13 @@ Widget _buildItem(
     ),
     child: Row(
       children: [
-        const Icon(Icons.delete),
+        GestureDetector(
+          onTap: () {
+            context.read<EcommerceBloc>().add(
+                  RemoveCartItemEvent(product: cartItems[index]),
+                );
+          },
+          child: const Icon(Icons.delete)),
         const SizedBox(width: 10),
         Container(
           height: 80,
@@ -93,7 +99,11 @@ Widget _buildItem(
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   GestureDetector(
-                    onTap: () {},
+                    onTap: () {
+                      context.read<EcommerceBloc>().add(
+                            UpdateCartQuantityEvent(product: cartItems[index]),
+                          );
+                    },
                     child: const Icon(
                       Icons.remove,
                       size: 14,
