@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:prueba_final_flutter/model/product_model.dart';
 import 'package:prueba_final_flutter/widgets/read_page/read_custom_appbar.dart';
+import 'package:prueba_final_flutter/widgets/read_page/read_pdfviewer.dart';
 
 class ReadPage extends StatelessWidget {
   final ProductModel product;
 
   const ReadPage({
-    super.key,
+    Key? key,
     required this.product,
-  });
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -23,13 +24,12 @@ class ReadPage extends StatelessWidget {
 
     return Column(
       children: [
-        _buildSection(screenSize, 0.113, ReadCustomAppbar()),
+        _buildSection(screenSize, 0.113, const ReadCustomAppbar()),
         _buildSection(
-            screenSize,
-            0.883,
-            Container(
-              color: Colors.red,
-            )),
+          screenSize,
+          0.883,
+          ReadPdfviewer(),
+        ),
       ],
     );
   }

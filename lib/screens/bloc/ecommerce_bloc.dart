@@ -16,6 +16,7 @@ class EcommerceBloc extends Bloc<EcommerceEvent, EcommerceState> {
     on<RemoveCartItemEvent>(_removeCartItemEvent);
     on<AddToFavoritesProductsEvent>(_addToFavoritesProductsEvent);
     on<AddBookEvent>(_addBookEvent);
+    on<UpdateNavIndexEvent>(_updateNavIndexEvent);
   }
 
   void _onLoadProducts(LoadProductsEvent event, Emitter<EcommerceState> emit) async {
@@ -115,5 +116,9 @@ class EcommerceBloc extends Bloc<EcommerceEvent, EcommerceState> {
     } catch (e) {
       print('Error adding book: $e');
     }
+  }
+
+  void _updateNavIndexEvent(UpdateNavIndexEvent event, Emitter<EcommerceState> emit) {
+    emit(state.copyWith(currentNavIndex: event.index));
   }
 }

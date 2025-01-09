@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:prueba_final_flutter/model/product_model.dart';
+import 'package:prueba_final_flutter/screens/bloc/ecommerce_bloc.dart';
 import 'package:prueba_final_flutter/screens/bookmark_page.dart';
-import 'package:prueba_final_flutter/screens/detail_book_page.dart';
 import 'package:prueba_final_flutter/screens/read_page.dart';
 
 class BottomNavbar extends StatefulWidget {
@@ -17,6 +18,8 @@ class _BottomNavbarState extends State<BottomNavbar> {
   int selectedIndex = 0;
 
   void onItemTapped(int index) {
+    context.read<EcommerceBloc>().add(UpdateNavIndexEvent(index: index));
+
     if (index == 1) {
       Navigator.push(
         context,
@@ -29,49 +32,50 @@ class _BottomNavbarState extends State<BottomNavbar> {
         MaterialPageRoute(
             builder: (context) => BookmarkPage(favorites: widget.favorites)),
       );
-    } else {
-      setState(() {
-        selectedIndex = index;
-      });
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: const Color(0xFF7CD4D4),
-      child: Container(
-        decoration: const BoxDecoration(
-          borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(30), topRight: Radius.circular(30)),
-          color: Colors.white,
-        ),
-        child: BottomNavigationBar(
-          currentIndex: selectedIndex,
-          onTap: onItemTapped,
-          elevation: 0,
-          backgroundColor: Colors.transparent,
-          selectedItemColor: Colors.orange,
-          unselectedItemColor: Colors.grey,
-          showSelectedLabels: true,
-          showUnselectedLabels: true,
-          type: BottomNavigationBarType.fixed,
-          items: const [
-            BottomNavigationBarItem(
-              icon: Icon(Icons.explore),
-              label: 'Explore',
+    return BlocBuilder<EcommerceBloc, EcommerceState>(
+      builder: (context, state) {
+        return Container(
+          decoration: const BoxDecoration(
+            borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(30), topRight: Radius.circular(30)),
+            color: Colors.white,
+          ),
+          child: ClipRRect(
+            borderRadius: const BorderRadius.only(
+                topLeft: Radius.circular(30), topRight: Radius.circular(30)),
+            child: BottomNavigationBar(
+              currentIndex: state.currentNavIndex,
+              onTap: onItemTapped,
+              elevation: 0,
+              backgroundColor: Colors.white,
+              selectedItemColor: Colors.orange,
+              unselectedItemColor: Colors.grey,
+              showSelectedLabels: true,
+              showUnselectedLabels: true,
+              type: BottomNavigationBarType.fixed,
+              items: const [
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.explore),
+                  label: 'Explore',
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.book),
+                  label: 'Reading',
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.bookmark),
+                  label: 'Bookmark',
+                ),
+              ],
             ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.book),
-              label: 'Reading',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.bookmark),
-              label: 'Bookmark',
-            ),
-          ],
-        ),
-      ),
+          ),
+        );
+      },
     );
   }
 }

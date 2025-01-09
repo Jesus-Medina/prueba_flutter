@@ -11,11 +11,14 @@ class BookDescriptionText extends StatelessWidget {
       alignment: Alignment(0, 1),
       widthFactor: 0.9,
       heightFactor: 0.9,
-      child: Text(product.description,
-        style: TextStyle(
-          fontSize: 11,
+      child: SingleChildScrollView(
+        child: Text(
+          product.description,
+          style: TextStyle(
+            fontSize: 11,
+          ),
+          textAlign: TextAlign.justify,
         ),
-        textAlign: TextAlign.justify,
       ),
     );
   }

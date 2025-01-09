@@ -28,24 +28,35 @@ class HomePage extends StatelessWidget {
 
     return BlocBuilder<EcommerceBloc, EcommerceState>(
       builder: (context, state) {
-        return Column(
+        return Stack(
           children: [
-            _buildSection(screenSize, 0.15, Header(cartItems: state.cart)),
-            _buildSection(screenSize, 0.10, const CustomSearchBar()),
-            _buildSection(
-                screenSize, 0.05, MoreBooks(products: state.products)),
-            state.homeScreenState == HomeScreenState.loading
-                ? _buildSection(screenSize, 0.33, Loading())
-                : _buildSection(
-                    screenSize, 0.33, CustomScroll(products: state.products)),
-            _buildSection(screenSize, 0.25, const ContinueReading()),
-            _buildSection(
+            Column(
+              children: [
+                _buildSection(screenSize, 0.15, Header(cartItems: state.cart)),
+                _buildSection(screenSize, 0.10, const CustomSearchBar()),
+                _buildSection(
+                    screenSize, 0.05, MoreBooks(products: state.products)),
+                state.homeScreenState == HomeScreenState.loading
+                    ? _buildSection(screenSize, 0.33, Loading())
+                    : _buildSection(
+                        screenSize, 0.33, CustomScroll(products: state.products)),
+                if (state.currentNavIndex == 1)
+                  _buildSection(screenSize, 0.37, const ContinueReading()),
+              ],
+            ),
+            Positioned(
+              left: 0,
+              right: 0,
+              bottom: 0,
+              child: _buildSection(
                 screenSize,
                 0.11,
                 BottomNavbar(
                   products: state.products,
                   favorites: state.favorites,
-                )),
+                ),
+              ),
+            ),
           ],
         );
       },
