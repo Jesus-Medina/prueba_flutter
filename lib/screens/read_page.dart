@@ -7,9 +7,9 @@ class ReadPage extends StatelessWidget {
   final ProductModel product;
 
   const ReadPage({
-    Key? key,
+    super.key,
     required this.product,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
