@@ -27,4 +27,18 @@ class RemoveCartItemEvent extends EcommerceEvent {
   const RemoveCartItemEvent({required this.product});
 }
 
-class AddToFavoritesProductsEvent extends EcommerceEvent {}
+class AddToFavoritesProductsEvent extends EcommerceEvent {
+  final ProductModel product;
+
+  const AddToFavoritesProductsEvent({required this.product});
+}
+
+class AddBookEvent extends EcommerceEvent {
+  final String title;
+  final String author;
+
+  const AddBookEvent({
+    required this.title,
+    required this.author,
+  });
+}

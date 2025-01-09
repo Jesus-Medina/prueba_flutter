@@ -1,4 +1,3 @@
-// ACTUALIZAR EL PRODUCT Y EL BLOC PARA QUE RECIBA LOS NUEVOS PARAMETROS DE LOS LIBROS
 
 List<Map<String, dynamic>> productsJson = [
   {

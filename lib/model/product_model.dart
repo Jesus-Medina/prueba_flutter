@@ -11,6 +11,7 @@ class ProductModel extends Equatable {
   final int pages;
   final String language;
   final int quantity;
+  final bool isFavorite;
 
   const ProductModel({
     required this.id,
@@ -23,6 +24,7 @@ class ProductModel extends Equatable {
     required this.pages,
     required this.language,
     this.quantity = 0,
+    this.isFavorite = false,
   });
 
   ProductModel copyWith({
@@ -36,6 +38,7 @@ class ProductModel extends Equatable {
     int? pages,
     String? language,
     int? quantity,
+    bool? isFavorite,
   }) {
     return ProductModel(
       id: id ?? this.id,
@@ -48,6 +51,7 @@ class ProductModel extends Equatable {
       pages: pages ?? this.pages,
       language: language ?? this.language,
       quantity: quantity ?? this.quantity,
+      isFavorite: isFavorite ?? this.isFavorite,
     );
   }
 
@@ -63,5 +67,6 @@ class ProductModel extends Equatable {
         pages,
         language,
         quantity,
+        isFavorite,
       ];
 }

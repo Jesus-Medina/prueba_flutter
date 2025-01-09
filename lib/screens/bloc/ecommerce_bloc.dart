@@ -13,6 +13,7 @@ class EcommerceBloc extends Bloc<EcommerceEvent, EcommerceState> {
     on<UpdateCartQuantityEvent>(_updateCartQuantityEvent);
     on<RemoveCartItemEvent>(_removeCartItemEvent);
     on<AddToFavoritesProductsEvent>(_addToFavoritesProductsEvent);
+    on<AddBookEvent>(_addBookEvent);
   }
 
   void _onLoadProducts(
@@ -98,11 +99,77 @@ class EcommerceBloc extends Bloc<EcommerceEvent, EcommerceState> {
   }
 
   void _addToFavoritesProductsEvent(
-      AddToFavoritesProductsEvent event, Emitter<EcommerceState> emit) {}
-}
+      AddToFavoritesProductsEvent event, Emitter<EcommerceState> emit) {
+    // Actualizamos isFavorite en la lista de productos
+    final List<ProductModel> updateProducts = state.products.map((product) {
+      if (product.id == event.product.id) {
+        return product.copyWith(isFavorite: !product.isFavorite);
+      }
+      return product;
+    }).toList();
+
+    // Actualizamos la lista de favoritos
+    List<ProductModel> updateFavorites = List.from(state.favorites);
+
+    // Verificamos si el producto ya existe en favoritos
+    bool existsInFavorites =
+        updateFavorites.any((product) => product.id == event.product.id);
+
+    if (existsInFavorites) {
+      // Si ya existe, lo removemos
+      updateFavorites.removeWhere((product) => product.id == event.product.id);
+    } else {
+      // Si no existe, lo añadimos
+      updateFavorites.add(event.product.copyWith(isFavorite: true));
+    }
+
+    // Emitimos el nuevo estado con ambas listas actualizadas
+    emit(state.copyWith(
+      products: updateProducts,
+      favorites: updateFavorites,
+    ));
+  }
+
+  void _addBookEvent(AddBookEvent event, Emitter<EcommerceState> emit) {
+    // Crear un nuevo libro con datos autogenerados
+    final newBook = {
+      "id": state.products.length + 1,
+      "title": event.title,
+      "author": event.author,
+      "price": 45.0, // precio por defecto
+      "image": "assets/images/book.jpg", // imagen por defecto
+      "description":
+          "lorem ipsum dolor sit amet, consectetur adipiscing elit...", // descripción por defecto
+      "rating": 4.5, // rating por defecto
+      "pages": 20, // páginas por defecto
+      "language": "ES", // idioma por defecto
+    };
+
+    // Añadir el nuevo libro a productsJson
+    productsJson.add(newBook);
+
+    // Convertir y actualizar la lista de productos
+    final updatedProducts = productsJson.map((json) {
+      return ProductModel(
+        id: json["id"].toString(),
+        title: json["title"],
+        author: json["author"],
+        price: double.parse(json["price"].toString()),
+        image: json["image"],
+        description: json["description"],
+        rating: double.parse(json["rating"].toString()),
+        pages: int.parse(json["pages"].toString()),
+        language: json["language"],
+      );
+    }).toList();
+
+    // Emitir el nuevo estado con la lista actualizada
+    emit(state.copyWith(products: updatedProducts));
+  }
 
 // LoadProductsEvent
 // AddToCartProductsEvent
 // UpdateCartQuantityEvent
 // RemoveCartItemEvent
 // AddToFavoritesProductsEvent
+}

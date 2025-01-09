@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:prueba_final_flutter/model/product_model.dart';
+import 'package:prueba_final_flutter/screens/bloc/ecommerce_bloc.dart';
 
 class BookPrice extends StatelessWidget {
   final ProductModel product;
@@ -70,15 +72,23 @@ class BookPrice extends StatelessWidget {
                     child: FractionallySizedBox(
                       heightFactor: 0.7,
                       widthFactor: 0.7,
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: Colors.teal,
-                          shape: BoxShape.circle,
-                        ),
-                        child: Icon(
-                          Icons.favorite,
-                          color: Colors.white,
-                          size: 22,
+                      child: GestureDetector(
+                        onTap: () {
+                          context.read<EcommerceBloc>().add(
+                                AddToFavoritesProductsEvent(product: product),
+                              );
+                          print("Add to favorites");
+                        },
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: Colors.teal,
+                            shape: BoxShape.circle,
+                          ),
+                          child: Icon(
+                            Icons.favorite,
+                            color: Colors.white,
+                            size: 22,
+                          ),
                         ),
                       ),
                     ),
