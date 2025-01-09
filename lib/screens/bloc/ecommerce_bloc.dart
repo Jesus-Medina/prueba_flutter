@@ -23,12 +23,16 @@ class EcommerceBloc extends Bloc<EcommerceEvent, EcommerceState> {
 
     final products = productsJson.map((json) {
       return ProductModel(
-          id: json["id"].toString(),
-          title: json["title"],
-          author: json["author"],
-          image: json["image"],
-          price: double.parse(json["price"].toString()),
-          description: json["description"]);
+        id: json["id"].toString(),
+        title: json["title"],
+        author: json["author"],
+        price: double.parse(json["price"].toString()),
+        image: json["image"],
+        description: json["description"],
+        rating: double.parse(json["rating"].toString()),
+        pages: int.parse(json["pages"].toString()),
+        language: json["language"],
+      );
     }).toList();
 
     emit(state.copyWith(
@@ -36,7 +40,14 @@ class EcommerceBloc extends Bloc<EcommerceEvent, EcommerceState> {
   }
 
   void _addToCartProductsEvent(
-      AddToCartProductsEvent event, Emitter<EcommerceState> emit) {}
+      AddToCartProductsEvent event, Emitter<EcommerceState> emit) {
+    final List<ProductModel> newCart = [];
+
+    newCart.add(event.product);
+
+    emit(state.copyWith(cart: newCart));
+  }
+
   void _updateCartQuantityEvent(
       UpdateCartQuantityEvent event, Emitter<EcommerceState> emit) {}
   void _removeCartItemEvent(

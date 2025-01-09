@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:prueba_final_flutter/model/product_model.dart';
 
 class BookRate extends StatelessWidget {
-  const BookRate({super.key});
+  final ProductModel product;
+  const BookRate({
+    super.key,
+    required this.product,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +18,6 @@ class BookRate extends StatelessWidget {
           color: Colors.grey[100],
           child: Row(
             children: [
-              // Removed mainAxisAlignment.spaceEvenly
               Expanded(
                 flex: 30,
                 child: Column(
@@ -26,7 +30,7 @@ class BookRate extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      "4.1",
+                      product.rating.toString(),
                       style: TextStyle(
                         fontSize: 10,
                       ),
@@ -52,7 +56,7 @@ class BookRate extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      "120 pages",
+                      "${product.pages.toString()} pages",
                       style: TextStyle(
                         fontSize: 10,
                       ),
@@ -78,7 +82,7 @@ class BookRate extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      "ENG",
+                      product.language,
                       style: TextStyle(
                         fontSize: 10,
                       ),

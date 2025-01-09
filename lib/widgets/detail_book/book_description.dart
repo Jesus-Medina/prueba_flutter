@@ -32,9 +32,9 @@ class BookDescription extends StatelessWidget {
     return Column(
       children: [
         _buildSection(constraints, 0.35, BookPrice(product: product)),
-        _buildSection(constraints, 0.16, BookRate(/* implementar rating, idioma y cantidad de paginas en bloc*/)),
+        _buildSection(constraints, 0.16, BookRate(product: product)),
         _buildSection(constraints, 0.23, BookDescriptionText(product: product)),
-        _buildSection(constraints, 0.26, BookBuy(/*implementar gestor de cantidad*/)),
+        _buildSection(constraints, 0.26, BookBuy(product: product)),
       ],
     );
   }

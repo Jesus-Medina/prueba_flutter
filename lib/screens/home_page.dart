@@ -30,7 +30,8 @@ class HomePage extends StatelessWidget {
       builder: (context, state) {
         return Column(
           children: [
-            _buildSection(screenSize, 0.15, const Header()),
+            _buildSection(screenSize, 0.15,
+                Header(cartItems: state.cart, notificationCount: 2)),
             _buildSection(screenSize, 0.10, const CustomSearchBar()),
             _buildSection(
                 screenSize, 0.05, MoreBooks(products: state.products)),

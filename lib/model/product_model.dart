@@ -4,37 +4,49 @@ class ProductModel extends Equatable {
   final String id;
   final String title;
   final String author;
-  final String image;
   final double price;
+  final String image;
   final String description;
+  final double rating;
+  final int pages;
+  final String language;
   final int quantity;
 
   const ProductModel({
     required this.id,
     required this.title,
     required this.author,
-    required this.image,
     required this.price,
+    required this.image,
     required this.description,
-    this.quantity = 0,
+    required this.rating,
+    required this.pages,
+    required this.language,
+    this.quantity = 1,
   });
 
   ProductModel copyWith({
     String? id,
     String? title,
     String? author,
-    String? image,
     double? price,
+    String? image,
     String? description,
+    double? rating,
+    int? pages,
+    String? language,
     int? quantity,
   }) {
     return ProductModel(
       id: id ?? this.id,
       title: title ?? this.title,
       author: author ?? this.author,
-      description: description ?? this.description,
-      image: image ?? this.image,
       price: price ?? this.price,
+      image: image ?? this.image,
+      description: description ?? this.description,
+      rating: rating ?? this.rating,
+      pages: pages ?? this.pages,
+      language: language ?? this.language,
       quantity: quantity ?? this.quantity,
     );
   }
@@ -44,9 +56,12 @@ class ProductModel extends Equatable {
         id,
         title,
         author,
-        description,
-        image,
         price,
+        image,
+        description,
+        rating,
+        pages,
+        language,
         quantity,
       ];
 }
