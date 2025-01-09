@@ -5,12 +5,10 @@ import 'package:prueba_final_flutter/screens/form_page.dart';
 
 class Header extends StatelessWidget {
   final List<ProductModel> cartItems;
-  final int notificationCount;
 
   const Header({
     super.key,
     required this.cartItems,
-    this.notificationCount = 0,
   });
 
   @override
@@ -104,7 +102,7 @@ class Header extends StatelessWidget {
           aspectRatio: 1,
           child: Center(
             child: Text(
-              itemCount.toString(),
+              "3",
               style: const TextStyle(
                 fontSize: 8,
                 fontWeight: FontWeight.w800,
@@ -121,7 +119,7 @@ class Header extends StatelessWidget {
     return Stack(
       children: [
         _buildProfileImage(constraints),
-        if (notificationCount > 0) _buildNotificationBadge(constraints),
+        _buildProfileNotificationBadge(constraints),
       ],
     );
   }
@@ -156,14 +154,14 @@ class Header extends StatelessWidget {
     );
   }
 
-  Widget _buildNotificationBadge(BoxConstraints constraints) {
+  Widget _buildProfileNotificationBadge(BoxConstraints constraints) {
     return Positioned(
       top: 0,
       right: 0,
       child: Container(
         height: constraints.maxHeight * 0.33,
         decoration: BoxDecoration(
-          color: Colors.orange,
+          color: Colors.green,
           border: Border.all(
             color: Colors.white,
             width: 1.5,
@@ -174,7 +172,7 @@ class Header extends StatelessWidget {
           aspectRatio: 1,
           child: Center(
             child: Text(
-              notificationCount.toString(),
+              "2",
               style: const TextStyle(
                 fontSize: 8,
                 fontWeight: FontWeight.w800,
