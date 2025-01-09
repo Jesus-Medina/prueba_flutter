@@ -1,17 +1,23 @@
+// custom_scroll.dart
 import 'package:flutter/material.dart';
-import 'package:prueba_final_flutter/data/data.dart';
+import 'package:prueba_final_flutter/model/product_model.dart';
 import 'package:prueba_final_flutter/screens/detail_book_page.dart';
 
 class CustomScroll extends StatelessWidget {
-  const CustomScroll({super.key});
+  final List<ProductModel> products;
+  
+  const CustomScroll({
+    super.key,
+    required this.products,
+  });
 
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
       scrollDirection: Axis.horizontal,
-      itemCount: productsJson.length,
+      itemCount: products.length,
       itemBuilder: (context, index) {
-        final product = productsJson[index];
+        final product = products[index];
         return LayoutBuilder(
           builder: (context, constraints) {
             return builCard(context, constraints, product);
@@ -21,19 +27,16 @@ class CustomScroll extends StatelessWidget {
     );
   }
 
-  Widget builCard(BuildContext context, BoxConstraints constraints,
-      Map<String, dynamic> product) { 
-    final productID = product["id"];
-
+  Widget builCard(
+      BuildContext context, BoxConstraints constraints, ProductModel product) {
     return GestureDetector(
       onTap: () {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => const DetailBookPage()),
+          MaterialPageRoute(builder: (context) => DetailBookPage(product: product)),
         );
       },
       child: SizedBox(
-        // Define un ancho fijo para cada tarjeta
         width: 150.0,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -50,30 +53,26 @@ class CustomScroll extends StatelessWidget {
                 ],
               ),
               child: Image.asset(
-                product["image"],
+                product.image,
                 fit: BoxFit.cover,
                 height: constraints.maxHeight * 0.7,
               ),
             ),
-            SizedBox(
-              height: 10,
-            ),
+            SizedBox(height: 10),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  product["author"],
+                  product.author,
                   style: TextStyle(color: Colors.grey[700], fontSize: 11),
                 ),
                 SizedBox(
                   width: constraints.maxHeight * 0.463,
                   child: Text(
-                    product["title"],
+                    product.title,
                     style: TextStyle(color: Colors.black, fontSize: 15),
-
-                    maxLines: 1, // Limita el texto a una línea
-                    overflow: TextOverflow
-                        .ellipsis, // Muestra "..." si el texto es demasiado largo
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
                   ),
                 ),
               ],
@@ -81,6 +80,6 @@ class CustomScroll extends StatelessWidget {
           ],
         ),
       ),
-    ); 
+    );
   }
 }

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:prueba_final_flutter/model/product_model.dart';
 import 'package:prueba_final_flutter/screens/more_book_page.dart';
 
 class MoreBooks extends StatelessWidget {
-  const MoreBooks({super.key});
+  final List<ProductModel> products;
+  const MoreBooks({super.key, required this.products});
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +23,7 @@ class MoreBooks extends StatelessWidget {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const MoreBookPage()),
+                MaterialPageRoute(builder: (context) => MoreBookPage(products: products)),
               );
             },
             child: Text(

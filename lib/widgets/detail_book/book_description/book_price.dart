@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:prueba_final_flutter/model/product_model.dart';
 
 class BookPrice extends StatelessWidget {
-  const BookPrice({super.key});
+  final ProductModel product;
+  const BookPrice({
+    super.key,
+    required this.product,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +39,7 @@ class BookPrice extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "\$20.00",
+                        product.price.toString(),
                         style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.w500,
@@ -42,14 +47,14 @@ class BookPrice extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        "El Arte De Amar",
+                        product.title,
                         style: TextStyle(
                           fontSize: 22,
                           fontWeight: FontWeight.w500,
                         ),
                       ),
                       Text(
-                        "Erich Fromm",
+                        product.author,
                         style: TextStyle(
                           fontSize: 12,
                           color: Colors.black54,

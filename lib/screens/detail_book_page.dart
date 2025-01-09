@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:prueba_final_flutter/model/product_model.dart';
 import 'package:prueba_final_flutter/widgets/detail_book/book_description.dart';
 import 'package:prueba_final_flutter/widgets/detail_book/detail_custom_app_bar.dart';
 import 'package:prueba_final_flutter/widgets/detail_book/photo_container.dart';
 
 class DetailBookPage extends StatelessWidget {
-  const DetailBookPage({super.key});
+  final ProductModel product;
+
+  const DetailBookPage({
+    super.key,
+    required this.product,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -20,8 +26,8 @@ class DetailBookPage extends StatelessWidget {
     return Column(
       children: [
         _buildSection(screenSize, 0.113, DetailCustomAppBar()),
-        _buildSection(screenSize, 0.40, PhotoContainer()),
-        _buildSection(screenSize, 0.47, BookDescription()),
+        _buildSection(screenSize, 0.40, PhotoContainer(product: product)),
+        _buildSection(screenSize, 0.47, BookDescription(product: product)),
       ],
     );
   }

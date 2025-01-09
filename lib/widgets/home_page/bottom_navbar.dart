@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:prueba_final_flutter/model/product_model.dart';
 import 'package:prueba_final_flutter/screens/detail_book_page.dart';
 import 'package:prueba_final_flutter/screens/more_book_page.dart';
 
 class BottomNavbar extends StatefulWidget {
-  const BottomNavbar({super.key});
+  final List<ProductModel> products;
+  const BottomNavbar({super.key, required this.products});
 
   @override
   State<BottomNavbar> createState() => _BottomNavbarState();
@@ -16,12 +18,14 @@ class _BottomNavbarState extends State<BottomNavbar> {
     if (index == 1) {
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => const DetailBookPage()),
+        MaterialPageRoute(
+            builder: (context) => DetailBookPage(product: widget.products[0])),
       );
     } else if (index == 2) {
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => const MoreBookPage()),
+        MaterialPageRoute(
+            builder: (context) => MoreBookPage(products: widget.products)),
       );
     } else {
       setState(() {
@@ -35,7 +39,7 @@ class _BottomNavbarState extends State<BottomNavbar> {
     return Container(
       color: const Color(0xFF7CD4D4),
       child: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           borderRadius: BorderRadius.only(
               topLeft: Radius.circular(30), topRight: Radius.circular(30)),
           color: Colors.white,

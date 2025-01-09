@@ -58,7 +58,6 @@ class BookBuy extends StatelessWidget {
                           // Aquí va tu función cuando se presione el botón
                         },
                         style: ElevatedButton.styleFrom(
-                          
                           backgroundColor:
                               Color(0xFFFF7052), // Color naranja del botón
                           shape: RoundedRectangleBorder(

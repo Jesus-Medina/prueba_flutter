@@ -1,8 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:prueba_final_flutter/widgets/cart_page/cart_checkout_button.dart';
-import 'package:prueba_final_flutter/widgets/cart_page/cart_custom_appbar.dart';
-import 'package:prueba_final_flutter/widgets/cart_page/cart_listview.dart';
-import 'package:prueba_final_flutter/widgets/cart_page/cart_total.dart';
 
 class FormPage extends StatelessWidget {
   const FormPage({super.key});
@@ -10,6 +6,9 @@ class FormPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text("Form Page"),
+      ),
       backgroundColor: Colors.white,
       body: _buildContentSections(context),
     );
@@ -20,7 +19,7 @@ class FormPage extends StatelessWidget {
 
     return Column(
       children: [
-        _buildSection(screenSize, 1, Container(color: Colors.red)),
+        _buildSection(screenSize, 0.92984, Container(color: Colors.red)),
       ],
     );
   }

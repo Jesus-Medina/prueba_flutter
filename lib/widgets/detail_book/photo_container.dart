@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:prueba_final_flutter/model/product_model.dart';
 
 class PhotoContainer extends StatelessWidget {
-  const PhotoContainer({super.key});
+  final ProductModel product;
+  
+  const PhotoContainer({
+    super.key,
+    required this.product,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +28,7 @@ class PhotoContainer extends StatelessWidget {
               ),
             ],
             image: DecorationImage(
-              image: AssetImage("assets/images/book.jpg"),
+              image: AssetImage(product.image),
               fit: BoxFit.fill,
             ),
           ),

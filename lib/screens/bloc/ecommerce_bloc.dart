@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:prueba_final_flutter/data/data.dart';
 import 'package:prueba_final_flutter/model/product_model.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -20,7 +21,18 @@ class EcommerceBloc extends Bloc<EcommerceEvent, EcommerceState> {
 
     await Future.delayed(const Duration(seconds: 2));
 
-    emit(state.copyWith(homeScreenState: HomeScreenState.success));
+    final products = productsJson.map((json) {
+      return ProductModel(
+          id: json["id"].toString(),
+          title: json["title"],
+          author: json["author"],
+          image: json["image"],
+          price: double.parse(json["price"].toString()),
+          description: json["description"]);
+    }).toList();
+
+    emit(state.copyWith(
+        homeScreenState: HomeScreenState.success, products: products));
   }
 
   void _addToCartProductsEvent(

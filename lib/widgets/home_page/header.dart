@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:prueba_final_flutter/screens/cart_page.dart';
+import 'package:prueba_final_flutter/screens/form_page.dart';
 
 class Header extends StatelessWidget {
   const Header({super.key});
@@ -18,7 +19,7 @@ class Header extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  _buildMenuIcon(constraints),
+                  _buildMenuIcon(constraints, context),
                   _buildHeaderRightSection(constraints, context),
                 ],
               ),
@@ -29,12 +30,20 @@ class Header extends StatelessWidget {
     );
   }
 
-  Widget _buildMenuIcon(BoxConstraints constraints) {
-    return Image.asset(
-      "assets/images/menu_icon.png",
-      height: constraints.maxHeight * 0.5,
-      width: constraints.maxHeight * 0.5,
-      fit: BoxFit.cover,
+  Widget _buildMenuIcon(BoxConstraints constraints, BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const FormPage()),
+        );
+      },
+      child: Image.asset(
+        "assets/images/menu_icon.png",
+        height: constraints.maxHeight * 0.5,
+        width: constraints.maxHeight * 0.5,
+        fit: BoxFit.cover,
+      ),
     );
   }
 

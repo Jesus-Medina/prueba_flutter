@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:prueba_final_flutter/model/product_model.dart';
 import 'package:prueba_final_flutter/widgets/more_book/book_list.dart';
 import 'package:prueba_final_flutter/widgets/more_book/more_custom_appbar.dart';
 
 class MoreBookPage extends StatelessWidget {
-  const MoreBookPage({super.key});
+  final List<ProductModel> products;
+  const MoreBookPage({super.key, required this.products});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +21,7 @@ class MoreBookPage extends StatelessWidget {
     return Column(
       children: [
         _buildSection(screenSize, 0.113, MoreCustomAppbar()),
-        _buildSection(screenSize, 0.88, BookList()),
+        _buildSection(screenSize, 0.88, BookList(products: products)),
       ],
     );
   }

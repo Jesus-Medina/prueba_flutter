@@ -1,22 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:prueba_final_flutter/model/product_model.dart';
 import 'package:prueba_final_flutter/screens/detail_book_page.dart';
 
 class BookList extends StatelessWidget {
-  BookList({super.key});
+  final List<ProductModel> products;
+  const BookList({super.key, required this.products});
 
-  final List<Map<String, String>> books = List.generate(
-      16,
-      (index) => index % 2 == 0
-          ? {
-              'title': 'El Arte De Amar',
-              'author': 'Erich Fromm',
-              'imageUrl': 'assets/images/book.jpg',
-            }
-          : {
-              'title': 'El Arte De Amar',
-              'author': 'Erich Fromm',
-              'imageUrl': 'assets/images/book.jpg',
-            });
+
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +14,7 @@ class BookList extends StatelessWidget {
       widthFactor: 0.90,
       heightFactor: 1,
       child: ListView.builder(
-        itemCount: (books.length / 2).ceil(),
+        itemCount: (products.length / 2).ceil(),
         itemBuilder: (context, index) {
           final int startIndex = index * 2;
           return Container(
@@ -34,7 +24,7 @@ class BookList extends StatelessWidget {
                 SizedBox(height: 24),
                 _buildBookItem(context, startIndex), // Pasamos context aquí
                 SizedBox(width: 42),
-                if (startIndex + 1 < books.length)
+                if (startIndex + 1 < products.length)
                   _buildBookItem(context, startIndex + 1) // Y aquí
                 else
                   Expanded(child: Container()),
@@ -53,7 +43,7 @@ class BookList extends StatelessWidget {
         onTap: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => DetailBookPage()),
+            MaterialPageRoute(builder: (context) => DetailBookPage(product: products[index],)),
           );
         },
         child: Column(
@@ -66,7 +56,7 @@ class BookList extends StatelessWidget {
                   borderRadius: BorderRadius.circular(8),
                   color: Colors.grey[200],
                   image: DecorationImage(
-                    image: AssetImage(books[index]['imageUrl']!),
+                    image: AssetImage(products[index].image),
                     fit: BoxFit.cover,
                   ),
                   boxShadow: [
@@ -81,7 +71,7 @@ class BookList extends StatelessWidget {
             ),
             SizedBox(height: 8),
             Text(
-              books[index]['title']!,
+              products[index].title,
               style: TextStyle(
                 fontSize: 14,
                 fontWeight: FontWeight.w500,
@@ -91,7 +81,7 @@ class BookList extends StatelessWidget {
             ),
             SizedBox(height: 4),
             Text(
-              books[index]['author']!,
+              products[index].author,
               style: TextStyle(
                 fontSize: 12,
                 color: Colors.grey[600],
