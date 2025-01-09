@@ -3,7 +3,7 @@ import 'package:prueba_final_flutter/model/product_model.dart';
 
 class PhotoContainer extends StatelessWidget {
   final ProductModel product;
-  
+
   const PhotoContainer({
     super.key,
     required this.product,
@@ -28,7 +28,7 @@ class PhotoContainer extends StatelessWidget {
               ),
             ],
             image: DecorationImage(
-              image: AssetImage(product.image),
+              image: NetworkImage(product.image),
               fit: BoxFit.fill,
             ),
           ),

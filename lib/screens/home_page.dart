@@ -40,7 +40,12 @@ class HomePage extends StatelessWidget {
                     screenSize, 0.33, CustomScroll(products: state.products)),
             _buildSection(screenSize, 0.25, const ContinueReading()),
             _buildSection(
-                screenSize, 0.11, BottomNavbar(products: state.products, favorites: state.favorites,)),
+                screenSize,
+                0.11,
+                BottomNavbar(
+                  products: state.products,
+                  favorites: state.favorites,
+                )),
           ],
         );
       },

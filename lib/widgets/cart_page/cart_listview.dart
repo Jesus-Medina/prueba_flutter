@@ -52,12 +52,12 @@ Widget _buildItem(
     child: Row(
       children: [
         GestureDetector(
-          onTap: () {
-            context.read<EcommerceBloc>().add(
-                  RemoveCartItemEvent(product: cartItems[index]),
-                );
-          },
-          child: const Icon(Icons.delete)),
+            onTap: () {
+              context.read<EcommerceBloc>().add(
+                    RemoveCartItemEvent(product: cartItems[index]),
+                  );
+            },
+            child: const Icon(Icons.delete)),
         const SizedBox(width: 10),
         Container(
           height: 80,
@@ -65,7 +65,7 @@ Widget _buildItem(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
             image: DecorationImage(
-              image: AssetImage(cartItems[index].image),
+              image: NetworkImage(cartItems[index].image),
               fit: BoxFit.fill,
             ),
           ),

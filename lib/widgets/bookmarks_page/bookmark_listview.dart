@@ -58,7 +58,7 @@ Widget _buildItem(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
             image: DecorationImage(
-              image: AssetImage(favorites[index].image),
+              image: NetworkImage(favorites[index].image),
               fit: BoxFit.fill,
             ),
           ),

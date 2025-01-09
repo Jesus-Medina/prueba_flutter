@@ -6,8 +6,6 @@ class BookList extends StatelessWidget {
   final List<ProductModel> products;
   const BookList({super.key, required this.products});
 
-
-
   @override
   Widget build(BuildContext context) {
     return FractionallySizedBox(
@@ -43,7 +41,10 @@ class BookList extends StatelessWidget {
         onTap: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => DetailBookPage(product: products[index],)),
+            MaterialPageRoute(
+                builder: (context) => DetailBookPage(
+                      product: products[index],
+                    )),
           );
         },
         child: Column(
@@ -56,7 +57,7 @@ class BookList extends StatelessWidget {
                   borderRadius: BorderRadius.circular(8),
                   color: Colors.grey[200],
                   image: DecorationImage(
-                    image: AssetImage(products[index].image),
+                    image: NetworkImage(products[index].image),
                     fit: BoxFit.cover,
                   ),
                   boxShadow: [

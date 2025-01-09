@@ -11,6 +11,11 @@ class Header extends StatelessWidget {
     required this.cartItems,
   });
 
+  // Método para calcular el total de items
+  int _getTotalCartItems() {
+    return cartItems.fold(0, (sum, item) => sum + item.quantity);
+  }
+
   @override
   Widget build(BuildContext context) {
     return FractionallySizedBox(
@@ -75,7 +80,7 @@ class Header extends StatelessWidget {
                 fit: BoxFit.cover,
               ),
               if (cartItems.isNotEmpty)
-                _buildCartNotificationBadge(constraints, cartItems.length),
+                _buildCartNotificationBadge(constraints),
             ],
           ),
         ),
@@ -85,8 +90,7 @@ class Header extends StatelessWidget {
     );
   }
 
-  Widget _buildCartNotificationBadge(
-      BoxConstraints constraints, int itemCount) {
+  Widget _buildCartNotificationBadge(BoxConstraints constraints) {
     return Positioned(
       top: 0,
       right: -5,
@@ -104,7 +108,7 @@ class Header extends StatelessWidget {
           aspectRatio: 1,
           child: Center(
             child: Text(
-              cartItems.length.toString(),
+              _getTotalCartItems().toString(),
               style: const TextStyle(
                 fontSize: 8,
                 fontWeight: FontWeight.w800,

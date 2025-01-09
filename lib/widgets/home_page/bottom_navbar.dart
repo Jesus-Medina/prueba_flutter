@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:prueba_final_flutter/model/product_model.dart';
 import 'package:prueba_final_flutter/screens/bookmark_page.dart';
 import 'package:prueba_final_flutter/screens/detail_book_page.dart';
+import 'package:prueba_final_flutter/screens/read_page.dart';
 
 class BottomNavbar extends StatefulWidget {
   final List<ProductModel> products, favorites;
-  const BottomNavbar({super.key, required this.products, required this.favorites});
+  const BottomNavbar(
+      {super.key, required this.products, required this.favorites});
 
   @override
   State<BottomNavbar> createState() => _BottomNavbarState();
@@ -19,12 +21,13 @@ class _BottomNavbarState extends State<BottomNavbar> {
       Navigator.push(
         context,
         MaterialPageRoute(
-            builder: (context) => DetailBookPage(product: widget.products[0])),
+            builder: (context) => ReadPage(product: widget.products[0])),
       );
     } else if (index == 2) {
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => BookmarkPage(favorites: widget.favorites)),
+        MaterialPageRoute(
+            builder: (context) => BookmarkPage(favorites: widget.favorites)),
       );
     } else {
       setState(() {

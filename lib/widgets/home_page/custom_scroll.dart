@@ -5,7 +5,7 @@ import 'package:prueba_final_flutter/screens/detail_book_page.dart';
 
 class CustomScroll extends StatelessWidget {
   final List<ProductModel> products;
-  
+
   const CustomScroll({
     super.key,
     required this.products,
@@ -33,7 +33,8 @@ class CustomScroll extends StatelessWidget {
       onTap: () {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => DetailBookPage(product: product)),
+          MaterialPageRoute(
+              builder: (context) => DetailBookPage(product: product)),
         );
       },
       child: SizedBox(
@@ -52,10 +53,13 @@ class CustomScroll extends StatelessWidget {
                   ),
                 ],
               ),
-              child: Image.asset(
-                product.image,
-                fit: BoxFit.cover,
-                height: constraints.maxHeight * 0.7,
+              child: FractionallySizedBox(
+                widthFactor: 0.85,
+                child: Image.network(
+                  product.image,
+                  fit: BoxFit.cover,
+                  height: constraints.maxHeight * 0.7,
+                ),
               ),
             ),
             SizedBox(height: 10),
