@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "67549705490",
+    "project_id": "prueba-flutter-ebook",
+    "storage_bucket": "prueba-flutter-ebook.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:67549705490:android:3a1c8f70ec0ca79caf2fcb",
+        "android_client_info": {
+          "package_name": "com.jesusmedina.ebookstore"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBM_LXHUpYYBSKkWH3SnFO3Mt7pn0YIve8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
