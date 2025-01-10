@@ -44,12 +44,19 @@ class BookPrice extends StatelessWidget {
                   children: [
                     Expanded(
                       flex: 3,
-                      child: Text(
-                        "\$14.990",
-                        style: TextStyle(
-                          fontSize: 24,
-                          fontWeight: FontWeight.w500,
-                          color: Colors.green,
+                      child: FractionallySizedBox(
+                        widthFactor: 0.4,
+                        child: FittedBox(
+                          fit: BoxFit.scaleDown,
+                          alignment: Alignment.centerLeft,
+                          child: Text(
+                            "\$${product.price}",
+                            style: TextStyle(
+                              fontSize: 24,
+                              fontWeight: FontWeight.w500,
+                              color: Colors.green,
+                            ),
+                          ),
                         ),
                       ),
                     ),
@@ -72,11 +79,18 @@ class BookPrice extends StatelessWidget {
                     ),
                     Expanded(
                       flex: 3,
-                      child: Text(
-                        product.author,
-                        style: TextStyle(
-                          fontSize: 14,
-                          color: Colors.black54,
+                      child: FractionallySizedBox(
+                        widthFactor: 0.5,
+                        child: FittedBox(
+                          fit: BoxFit.scaleDown,
+                          alignment: Alignment.topLeft,
+                          child: Text(
+                            product.author,
+                            style: TextStyle(
+                              fontSize: 14,
+                              color: Colors.black54,
+                            ),
+                          ),
                         ),
                       ),
                     ),

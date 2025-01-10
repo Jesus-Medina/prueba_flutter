@@ -16,7 +16,7 @@ class ContinueReading extends StatelessWidget {
             spreadRadius: 1,
           ),
         ],
-        color: AppColors.primaryBackground,
+        color: AppColors.secondaryBackground,
         image: DecorationImage(
           image: NetworkImage(
             "https://i.ibb.co/1qBCJ1N/wmremove-transformed-removebg-preview.png",
