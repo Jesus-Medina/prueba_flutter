@@ -138,7 +138,7 @@ class Header extends StatelessWidget {
         child: Container(
           decoration: BoxDecoration(
             image: const DecorationImage(
-              image: AssetImage("assets/images/profile.jpeg"),
+              image: NetworkImage("https://thispersondoesnotexist.com/"),
               fit: BoxFit.cover,
             ),
             border: Border.all(

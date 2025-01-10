@@ -38,8 +38,8 @@ class HomePage extends StatelessWidget {
                     screenSize, 0.05, MoreBooks(products: state.products)),
                 state.homeScreenState == HomeScreenState.loading
                     ? _buildSection(screenSize, 0.33, Loading())
-                    : _buildSection(
-                        screenSize, 0.33, CustomScroll(products: state.products)),
+                    : _buildSection(screenSize, 0.33,
+                        CustomScroll(products: state.products)),
                 if (state.currentNavIndex == 1)
                   _buildSection(screenSize, 0.37, const ContinueReading()),
               ],
