@@ -50,7 +50,7 @@ class BookPrice extends StatelessWidget {
                           fit: BoxFit.scaleDown,
                           alignment: Alignment.centerLeft,
                           child: Text(
-                            "\$${product.price}",
+                            "\$${product.price.toStringAsFixed(3)}",
                             style: TextStyle(
                               fontSize: 24,
                               fontWeight: FontWeight.w500,

@@ -18,7 +18,7 @@ class CartTotal extends StatelessWidget {
         return FractionallySizedBox(
           widthFactor: 0.9,
           heightFactor: 1,
-          child: Text("total: \$${total.toStringAsFixed(2)}",
+          child: Text("total: \$${total.toStringAsFixed(3)}",
               textAlign: TextAlign.end,
               style: TextStyle(
                 fontSize: 16,

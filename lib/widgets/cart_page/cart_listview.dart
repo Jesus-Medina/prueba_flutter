@@ -158,7 +158,7 @@ Widget _buildItem(
             child: FittedBox(
               child: Text(
                 (cartItems[index].price * cartItems[index].quantity)
-                    .toStringAsFixed(2),
+                    .toStringAsFixed(3),
                 style: const TextStyle(
                   fontSize: 15,
                   fontWeight: FontWeight.w500,
