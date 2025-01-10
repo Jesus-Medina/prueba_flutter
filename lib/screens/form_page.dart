@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:prueba_final_flutter/constants/app_colors.dart';
 import 'package:prueba_final_flutter/widgets/form_page/form_custom_appbar.dart';
 import 'package:prueba_final_flutter/widgets/form_page/my_form.dart';
 
@@ -8,7 +9,7 @@ class FormPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: AppColors.primaryBackground,
       body: _buildContentSections(context),
     );
   }

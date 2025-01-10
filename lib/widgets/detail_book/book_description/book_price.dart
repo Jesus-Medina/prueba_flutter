@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:prueba_final_flutter/constants/app_colors.dart';
 import 'package:prueba_final_flutter/model/product_model.dart';
 import 'package:prueba_final_flutter/screens/bloc/ecommerce_bloc.dart';
 
@@ -15,7 +16,7 @@ class BookPrice extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: AppColors.primaryBackground,
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(30),
           topRight: Radius.circular(30),
@@ -33,7 +34,7 @@ class BookPrice extends StatelessWidget {
         heightFactor: 0.75,
         widthFactor: 0.90,
         child: Container(
-          color: Colors.white,
+          color: AppColors.primaryBackground,
           child: Row(
             children: [
               Expanded(
@@ -106,7 +107,7 @@ class BookPrice extends StatelessWidget {
                             ),
                             child: Icon(
                               Icons.favorite,
-                              color: Colors.white,
+                              color: AppColors.primaryBackground,
                               size: 22,
                             ),
                           ),

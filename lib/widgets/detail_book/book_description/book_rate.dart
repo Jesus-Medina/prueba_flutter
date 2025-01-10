@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:prueba_final_flutter/constants/app_colors.dart';
 import 'package:prueba_final_flutter/model/product_model.dart';
 
 class BookRate extends StatelessWidget {
@@ -11,7 +12,7 @@ class BookRate extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.white,
+      color: AppColors.primaryBackground,
       child: FractionallySizedBox(
         widthFactor: 0.9,
         child: Container(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:prueba_final_flutter/constants/app_colors.dart';
 
 class CartCheckoutButton extends StatelessWidget {
   const CartCheckoutButton({super.key});
@@ -20,7 +21,7 @@ class CartCheckoutButton extends StatelessWidget {
         child: Text(
           "Checkout",
           style: TextStyle(
-            color: Colors.white,
+            color: AppColors.primaryBackground,
             fontSize: 20,
             fontWeight: FontWeight.w400,
           ),

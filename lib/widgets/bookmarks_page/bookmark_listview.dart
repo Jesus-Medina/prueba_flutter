@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:prueba_final_flutter/constants/app_colors.dart';
 import 'package:prueba_final_flutter/model/product_model.dart';
 import 'package:prueba_final_flutter/screens/bloc/ecommerce_bloc.dart';
 
@@ -39,7 +40,7 @@ Widget _buildItem(
     margin: const EdgeInsets.all(10),
     padding: const EdgeInsets.all(10),
     decoration: BoxDecoration(
-      color: Colors.white,
+      color: AppColors.primaryBackground,
       borderRadius: BorderRadius.circular(10),
       boxShadow: const [
         BoxShadow(

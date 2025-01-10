@@ -19,7 +19,6 @@ class PhotoContainer extends StatelessWidget {
         widthFactor: 0.4,
         child: Container(
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(20),
             boxShadow: [
               BoxShadow(
                 color: Colors.black12,

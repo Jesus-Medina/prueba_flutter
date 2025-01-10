@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:prueba_final_flutter/constants/app_colors.dart';
 import 'package:prueba_final_flutter/model/product_model.dart';
 import 'package:prueba_final_flutter/screens/cart_page.dart';
 import 'package:prueba_final_flutter/screens/form_page.dart';
@@ -99,7 +100,7 @@ class Header extends StatelessWidget {
         decoration: BoxDecoration(
           color: Colors.orange,
           border: Border.all(
-            color: Colors.white,
+            color: AppColors.primaryBackground,
             width: 1.5,
           ),
           borderRadius: BorderRadius.circular(50),
@@ -112,7 +113,7 @@ class Header extends StatelessWidget {
               style: const TextStyle(
                 fontSize: 8,
                 fontWeight: FontWeight.w800,
-                color: Colors.white,
+                color: AppColors.primaryBackground,
               ),
             ),
           ),
@@ -142,7 +143,7 @@ class Header extends StatelessWidget {
               fit: BoxFit.cover,
             ),
             border: Border.all(
-              color: Colors.white,
+              color: AppColors.primaryBackground,
               width: 2,
             ),
             borderRadius: BorderRadius.circular(50),
@@ -169,7 +170,7 @@ class Header extends StatelessWidget {
         decoration: BoxDecoration(
           color: Colors.green,
           border: Border.all(
-            color: Colors.white,
+            color: AppColors.primaryBackground,
             width: 1.5,
           ),
           borderRadius: BorderRadius.circular(50),
@@ -182,7 +183,7 @@ class Header extends StatelessWidget {
               style: const TextStyle(
                 fontSize: 8,
                 fontWeight: FontWeight.w800,
-                color: Colors.white,
+                color: AppColors.primaryBackground,
               ),
             ),
           ),

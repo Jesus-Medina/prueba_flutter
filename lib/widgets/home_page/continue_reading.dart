@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:prueba_final_flutter/constants/app_colors.dart';
 
 class ContinueReading extends StatelessWidget {
   const ContinueReading({super.key});
@@ -21,7 +22,7 @@ class ContinueReading extends StatelessWidget {
               children: [
                 Icon(
                   Icons.horizontal_rule,
-                  color: Colors.white,
+                  color: AppColors.primaryBackground,
                   size: 30,
                 )
               ],
@@ -32,14 +33,14 @@ class ContinueReading extends StatelessWidget {
                 Text(
                   'Continue Reading',
                   style: TextStyle(
-                    color: Colors.white,
+                    color: AppColors.primaryBackground,
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
                 Icon(
                   Icons.more_horiz,
-                  color: Colors.white,
+                  color: AppColors.primaryBackground,
                 ),
               ],
             ),
@@ -47,17 +48,19 @@ class ContinueReading extends StatelessWidget {
             Container(
               padding: EdgeInsets.all(15),
               decoration: BoxDecoration(
-                  color: Colors.white, borderRadius: BorderRadius.circular(20)),
+                  color: AppColors.primaryBackground,
+                  borderRadius: BorderRadius.circular(20)),
               child: Row(
                 children: [
                   Container(
                     width: 45,
                     height: 45,
                     decoration: BoxDecoration(
-                      color: Colors.white,
+                      color: AppColors.primaryBackground,
                       borderRadius: BorderRadius.circular(8),
                       image: const DecorationImage(
-                        image: AssetImage("assets/images/book.jpg"),
+                        image: NetworkImage(
+                            "https://m.media-amazon.com/images/I/611LVKy2PBL._SL1200_.jpg"),
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -68,7 +71,7 @@ class ContinueReading extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         const Text(
-                          'Find the lonely monster',
+                          'La Mujer Rota',
                           style: TextStyle(
                             color: Colors.black,
                             fontSize: 14,
@@ -85,7 +88,7 @@ class ContinueReading extends StatelessWidget {
                             ),
                             const SizedBox(width: 4),
                             Text(
-                              '4.8',
+                              '4.7',
                               style: TextStyle(
                                 color: Colors.black,
                                 fontSize: 12,
@@ -105,14 +108,14 @@ class ContinueReading extends StatelessWidget {
                         CircularProgressIndicator(
                           value: 0.65, // 65%
                           backgroundColor: Colors.grey.withOpacity(0.2),
-                          valueColor: const AlwaysStoppedAnimation<Color>(
-                              Colors.deepOrange),
+                          valueColor: AlwaysStoppedAnimation<Color>(
+                              AppColors.buttonRed),
                           strokeWidth: 3,
                         ),
                         Text(
                           '65%',
                           style: TextStyle(
-                            color: Colors.deepOrangeAccent,
+                            color: AppColors.buttonRed,
                             fontSize: 12,
                             fontWeight: FontWeight.bold,
                           ),

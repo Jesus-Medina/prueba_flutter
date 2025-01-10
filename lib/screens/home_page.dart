@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:prueba_final_flutter/constants/app_colors.dart';
 import 'package:prueba_final_flutter/screens/bloc/ecommerce_bloc.dart';
 import 'package:prueba_final_flutter/widgets/home_page/bottom_navbar.dart';
 import 'package:prueba_final_flutter/widgets/home_page/continue_reading.dart';
@@ -15,7 +16,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: AppColors.primaryBackground,
       body: BlocProvider.value(
         value: context.read<EcommerceBloc>()..add(LoadProductsEvent()),
         child: _buildContentSections(context),

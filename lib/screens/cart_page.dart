@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:prueba_final_flutter/constants/app_colors.dart';
 import 'package:prueba_final_flutter/model/product_model.dart';
 import 'package:prueba_final_flutter/widgets/cart_page/cart_checkout_button.dart';
 import 'package:prueba_final_flutter/widgets/cart_page/cart_custom_appbar.dart';
@@ -12,7 +13,7 @@ class CartPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: AppColors.primaryBackground,
       body: _buildContentSections(context),
     );
   }

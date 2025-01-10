@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:prueba_final_flutter/constants/app_colors.dart';
 
 class CartCustomAppbar extends StatelessWidget {
   const CartCustomAppbar({super.key});
@@ -6,7 +7,7 @@ class CartCustomAppbar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.white,
+      color: AppColors.primaryBackground,
       child: FractionallySizedBox(
         alignment: Alignment(0, 1),
         heightFactor: 0.45,

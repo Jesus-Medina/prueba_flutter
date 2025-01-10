@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:prueba_final_flutter/constants/app_colors.dart';
 import 'package:prueba_final_flutter/model/product_model.dart';
 import 'package:prueba_final_flutter/screens/bloc/ecommerce_bloc.dart';
 import 'package:prueba_final_flutter/screens/bookmark_page.dart';
@@ -40,10 +41,10 @@ class _BottomNavbarState extends State<BottomNavbar> {
     return BlocBuilder<EcommerceBloc, EcommerceState>(
       builder: (context, state) {
         return Container(
-          decoration: const BoxDecoration(
+          decoration: BoxDecoration(
             borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(30), topRight: Radius.circular(30)),
-            color: Colors.white,
+            color: AppColors.primaryBackground,
           ),
           child: ClipRRect(
             borderRadius: const BorderRadius.only(
@@ -52,7 +53,7 @@ class _BottomNavbarState extends State<BottomNavbar> {
               currentIndex: state.currentNavIndex,
               onTap: onItemTapped,
               elevation: 0,
-              backgroundColor: Colors.white,
+              backgroundColor: AppColors.primaryBackground,
               selectedItemColor: Colors.orange,
               unselectedItemColor: Colors.grey,
               showSelectedLabels: true,

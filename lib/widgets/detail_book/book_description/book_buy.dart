@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:prueba_final_flutter/constants/app_colors.dart';
 import 'package:prueba_final_flutter/model/product_model.dart';
 import 'package:prueba_final_flutter/screens/bloc/ecommerce_bloc.dart';
 
@@ -99,10 +100,10 @@ class _BookBuyState extends State<BookBuy> {
                         borderRadius: BorderRadius.circular(8),
                       ),
                     ),
-                    child: const Text(
+                    child: Text(
                       'Add to Cart',
                       style: TextStyle(
-                        color: Colors.white,
+                        color: AppColors.primaryBackground,
                         fontSize: 13,
                         fontWeight: FontWeight.w500,
                       ),
