@@ -26,7 +26,7 @@ class BookList extends StatelessWidget {
           crossAxisSpacing: 14,
           mainAxisSpacing: 7,
           childAspectRatio:
-              160 / 270, // Ajusta la proporción de aspecto del hijo
+              150 / 250, // Ajusta la proporción de aspecto del hijo
         ),
         itemCount: products.length,
         itemBuilder: (context, index) {
@@ -54,8 +54,8 @@ class BookList extends StatelessWidget {
           },
           child: Center(
             child: Container(
-              width: 160, // Establece el ancho deseado de la tarjeta
-              height: 270, // Establece el alto deseado de la tarjeta
+              width: 150, // Establece el ancho deseado de la tarjeta
+              height: 250, // Establece el alto deseado de la tarjeta
               decoration: BoxDecoration(
                 color: AppColors.secondaryBackground,
                 border: Border.all(
@@ -132,8 +132,8 @@ class BookList extends StatelessWidget {
         ),
         if (showDeleteButtons)
           Positioned(
-            top: 8,
-            right: 8,
+            top: 14,
+            right: 4,
             child: GestureDetector(
               onTap: () {
                 context.read<EcommerceBloc>().add(

@@ -45,14 +45,22 @@ class MoreCustomAppbarState extends State<MoreCustomAppbar> {
                 ),
               ),
             ),
-            IconButton(
-              icon: Icon(
-                Icons.more_horiz,
+            Container(
+              decoration: BoxDecoration(
                 color: _isSelected
-                    ? AppColors.buttonRed
-                    : Colors.black, // Cambia el color cuando está seleccionado
+                    ? Colors.black12
+                    : Colors
+                        .transparent, // Cambia el color de fondo cuando está seleccionado
+                shape: BoxShape.circle, // Hace que el contenedor sea circular
               ),
-              onPressed: _toggleSelection,
+              child: IconButton(
+                icon: Icon(
+                  Icons.more_horiz,
+                  color: Colors
+                      .black, // Cambia el color del icono cuando está seleccionado
+                ),
+                onPressed: _toggleSelection,
+              ),
             ),
           ],
         ),
