@@ -22,7 +22,7 @@ class PhotoContainer extends StatelessWidget {
           decoration: BoxDecoration(
             boxShadow: [
               BoxShadow(
-                color: Colors.black12,
+                color: Colors.black26,
                 blurRadius: 25,
                 spreadRadius: 1,
               ),

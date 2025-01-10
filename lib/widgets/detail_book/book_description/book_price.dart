@@ -45,9 +45,9 @@ class BookPrice extends StatelessWidget {
                     Expanded(
                       flex: 3,
                       child: Text(
-                        "\$${product.price.toString()}",
+                        "\$14.990",
                         style: TextStyle(
-                          fontSize: 20,
+                          fontSize: 24,
                           fontWeight: FontWeight.w500,
                           color: Colors.green,
                         ),
@@ -75,7 +75,7 @@ class BookPrice extends StatelessWidget {
                       child: Text(
                         product.author,
                         style: TextStyle(
-                          fontSize: 12,
+                          fontSize: 14,
                           color: Colors.black54,
                         ),
                       ),
