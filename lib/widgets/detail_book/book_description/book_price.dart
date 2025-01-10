@@ -42,31 +42,42 @@ class BookPrice extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      "\$${product.price.toString()}",
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.w500,
-                        color: Colors.green,
+                    Expanded(
+                      flex: 3,
+                      child: Text(
+                        "\$${product.price.toString()}",
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w500,
+                          color: Colors.green,
+                        ),
                       ),
                     ),
-                    FractionallySizedBox(
-                      widthFactor: 0.8,
-                      child: FittedBox(
-                        child: Text(
-                          product.title,
-                          style: TextStyle(
-                            fontSize: 22,
-                            fontWeight: FontWeight.w500,
+                    Expanded(
+                      flex: 4,
+                      child: FractionallySizedBox(
+                        widthFactor: 0.95,
+                        child: FittedBox(
+                          fit: BoxFit.scaleDown,
+                          alignment: Alignment.centerLeft,
+                          child: Text(
+                            product.title,
+                            style: TextStyle(
+                              fontSize: 44,
+                              fontWeight: FontWeight.w500,
+                            ),
                           ),
                         ),
                       ),
                     ),
-                    Text(
-                      product.author,
-                      style: TextStyle(
-                        fontSize: 12,
-                        color: Colors.black54,
+                    Expanded(
+                      flex: 3,
+                      child: Text(
+                        product.author,
+                        style: TextStyle(
+                          fontSize: 12,
+                          color: Colors.black54,
+                        ),
                       ),
                     ),
                   ],
@@ -101,8 +112,8 @@ class BookPrice extends StatelessWidget {
                           child: Container(
                             decoration: BoxDecoration(
                               color: updatedProduct.isFavorite
-                                  ? Colors.red
-                                  : Colors.teal,
+                                  ? AppColors.buttonRed
+                                  : AppColors.buttonBlack,
                               shape: BoxShape.circle,
                             ),
                             child: Icon(

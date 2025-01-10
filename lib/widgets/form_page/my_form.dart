@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:prueba_final_flutter/constants/app_colors.dart';
 import 'package:prueba_final_flutter/screens/bloc/ecommerce_bloc.dart';
 
 class MyForm extends StatefulWidget {
@@ -52,7 +53,6 @@ class _MyFormState extends State<MyForm> {
       heightFactor: 0.95,
       alignment: Alignment.center,
       child: Container(
-        color: Colors.grey[200],
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Form(
@@ -62,9 +62,23 @@ class _MyFormState extends State<MyForm> {
               children: [
                 TextFormField(
                   controller: _titleController,
-                  decoration: const InputDecoration(
+                  decoration: InputDecoration(
+                    fillColor: AppColors.shadowColor,
+                    filled: true,
                     labelText: 'Title',
-                    border: OutlineInputBorder(),
+                    labelStyle: TextStyle(
+                        color: AppColors
+                            .primaryBackground), // Cambia el color del label
+                    border: OutlineInputBorder(
+                      borderSide: BorderSide(
+                          color: AppColors
+                              .primaryBackground), // Cambia el color del borde
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                          color: AppColors
+                              .buttonBlack), // Cambia el color del borde cuando está enfocado
+                    ),
                   ),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
@@ -76,9 +90,23 @@ class _MyFormState extends State<MyForm> {
                 const SizedBox(height: 16),
                 TextFormField(
                   controller: _authorController,
-                  decoration: const InputDecoration(
+                  decoration: InputDecoration(
+                    fillColor: AppColors.shadowColor,
+                    filled: true,
                     labelText: 'Author',
-                    border: OutlineInputBorder(),
+                    labelStyle: TextStyle(
+                        color: AppColors
+                            .primaryBackground), // Cambia el color del label
+                    border: OutlineInputBorder(
+                      borderSide: BorderSide(
+                          color: AppColors
+                              .buttonBlack), // Cambia el color del borde
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                          color: AppColors
+                              .buttonBlack), // Cambia el color del borde cuando está enfocado
+                    ),
                   ),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
@@ -89,8 +117,12 @@ class _MyFormState extends State<MyForm> {
                 ),
                 const SizedBox(height: 16),
                 ElevatedButton(
+                  style: ButtonStyle(),
                   onPressed: () => _guardarTextos(context),
-                  child: const Text('Add Book'),
+                  child: Text(
+                    'Add Book',
+                    style: TextStyle(color: AppColors.buttonBlack),
+                  ),
                 ),
               ],
             ),

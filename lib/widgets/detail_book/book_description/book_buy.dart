@@ -68,7 +68,7 @@ class _BookBuyState extends State<BookBuy> {
                     textAlign: TextAlign.center,
                     style: const TextStyle(
                       fontSize: 15,
-                      color: Colors.teal,
+                      color: Colors.red,
                     ),
                   ),
                   GestureDetector(
@@ -95,7 +95,7 @@ class _BookBuyState extends State<BookBuy> {
                           );
                     },
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color(0xFFFF7052),
+                      backgroundColor: AppColors.buttonRed,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(8),
                       ),

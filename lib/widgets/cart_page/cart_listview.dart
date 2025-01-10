@@ -51,99 +51,118 @@ Widget _buildItem(
       ],
     ),
     child: Row(
+      spacing: 10,
       children: [
-        GestureDetector(
-            onTap: () {
-              context.read<EcommerceBloc>().add(
-                    RemoveCartItemEvent(product: cartItems[index]),
-                  );
-            },
-            child: const Icon(Icons.delete)),
-        const SizedBox(width: 10),
-        Container(
-          height: 80,
-          width: 70,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10),
-            image: DecorationImage(
-              image: NetworkImage(cartItems[index].image),
-              fit: BoxFit.fill,
+        Expanded(
+          flex: 1,
+          child: GestureDetector(
+              onTap: () {
+                context.read<EcommerceBloc>().add(
+                      RemoveCartItemEvent(product: cartItems[index]),
+                    );
+              },
+              child: const Icon(Icons.delete)),
+        ),
+        Expanded(
+          flex: 2,
+          child: AspectRatio(
+            aspectRatio: 1 / 1.5,
+            child: Container(
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: NetworkImage(cartItems[index].image),
+                  fit: BoxFit.fill,
+                ),
+              ),
             ),
           ),
         ),
-        const SizedBox(width: 10),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              cartItems[index].title,
-              style: const TextStyle(
-                fontSize: 14,
-                fontWeight: FontWeight.w500,
-              ),
-            ),
-            Text(
-              cartItems[index].author,
-              style: const TextStyle(
-                fontSize: 12,
-                fontWeight: FontWeight.w400,
-              ),
-            ),
-            const SizedBox(height: 4),
-            Container(
-              color: Colors.grey[200],
-              padding: const EdgeInsets.symmetric(horizontal: 6),
-              width: 65,
-              height: 25,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  GestureDetector(
-                    onTap: () {
-                      context.read<EcommerceBloc>().add(
-                            UpdateCartQuantityEvent(product: cartItems[index]),
-                          );
-                    },
-                    child: const Icon(
-                      Icons.remove,
-                      size: 14,
-                    ),
+        Expanded(
+          flex: 4,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              FittedBox(
+                child: Text(
+                  cartItems[index].title,
+                  style: const TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w500,
                   ),
-                  Center(
-                    child: Text(
-                      cartItems[index].quantity.toString(),
-                      textAlign: TextAlign.center,
-                      style: const TextStyle(
-                        fontSize: 14,
-                        color: Colors.teal,
+                ),
+              ),
+              Text(
+                cartItems[index].author,
+                style: const TextStyle(
+                  fontSize: 12,
+                  fontWeight: FontWeight.w400,
+                ),
+              ),
+              const SizedBox(height: 4),
+              Container(
+                color: Colors.grey[200],
+                padding: const EdgeInsets.symmetric(horizontal: 6),
+                width: 65,
+                height: 25,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        context.read<EcommerceBloc>().add(
+                              UpdateCartQuantityMinusEvent(
+                                  product: cartItems[index]),
+                            );
+                      },
+                      child: const Icon(
+                        Icons.remove,
+                        size: 14,
                       ),
                     ),
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      context.read<EcommerceBloc>().add(
-                            AddToCartProductsEvent(product: cartItems[index]),
-                          );
-                    },
-                    child: const Icon(
-                      Icons.add,
-                      size: 14,
+                    Center(
+                      child: FittedBox(
+                        fit: BoxFit.scaleDown,
+                        child: Text(
+                          cartItems[index].quantity.toString(),
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontSize: 14,
+                            color: AppColors.buttonRed,
+                          ),
+                        ),
+                      ),
                     ),
-                  ),
-                ],
+                    GestureDetector(
+                      onTap: () {
+                        context.read<EcommerceBloc>().add(
+                              UpdateCartQuantityPlusEvent(
+                                  product: cartItems[index]),
+                            );
+                      },
+                      child: const Icon(
+                        Icons.add,
+                        size: 14,
+                      ),
+                    ),
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
         Expanded(
+          flex: 3,
           child: Container(
             alignment: const Alignment(0.8, 0),
-            child: Text(
-              (cartItems[index].price * cartItems[index].quantity).toString(),
-              style: const TextStyle(
-                fontSize: 15,
-                fontWeight: FontWeight.w500,
+            child: FittedBox(
+              child: Text(
+                (cartItems[index].price * cartItems[index].quantity)
+                    .toStringAsFixed(2),
+                style: const TextStyle(
+                  fontSize: 15,
+                  fontWeight: FontWeight.w500,
+                ),
               ),
             ),
           ),

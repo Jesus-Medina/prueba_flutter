@@ -7,7 +7,6 @@ class FormCustomAppbar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: AppColors.primaryBackground,
       child: FractionallySizedBox(
         alignment: Alignment(0, 1),
         heightFactor: 0.45,

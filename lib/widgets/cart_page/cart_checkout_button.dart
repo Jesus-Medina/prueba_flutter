@@ -13,7 +13,7 @@ class CartCheckoutButton extends StatelessWidget {
       child: ElevatedButton(
         onPressed: () {},
         style: ElevatedButton.styleFrom(
-          backgroundColor: Colors.deepOrange,
+          backgroundColor: AppColors.buttonRed,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10),
           ),

@@ -98,7 +98,7 @@ class Header extends StatelessWidget {
       child: Container(
         height: constraints.maxHeight * 0.33,
         decoration: BoxDecoration(
-          color: Colors.orange,
+          color: AppColors.buttonRed,
           border: Border.all(
             color: AppColors.primaryBackground,
             width: 1.5,
@@ -168,7 +168,7 @@ class Header extends StatelessWidget {
       child: Container(
         height: constraints.maxHeight * 0.33,
         decoration: BoxDecoration(
-          color: Colors.green,
+          color: Colors.black87,
           border: Border.all(
             color: AppColors.primaryBackground,
             width: 1.5,

@@ -8,7 +8,11 @@ class ContinueReading extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: const Color(0xFF7CD4D4),
+        image: DecorationImage(
+            image: NetworkImage(
+              "https://plus.unsplash.com/premium_photo-1672944876342-4090164e1c04?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            ),
+            fit: BoxFit.cover),
         borderRadius: BorderRadius.only(
             topLeft: Radius.circular(30), topRight: Radius.circular(30)),
       ),
@@ -107,7 +111,7 @@ class ContinueReading extends StatelessWidget {
                       children: [
                         CircularProgressIndicator(
                           value: 0.65, // 65%
-                          backgroundColor: Colors.grey.withOpacity(0.2),
+                          backgroundColor: AppColors.shadowColor,
                           valueColor: AlwaysStoppedAnimation<Color>(
                               AppColors.buttonRed),
                           strokeWidth: 3,

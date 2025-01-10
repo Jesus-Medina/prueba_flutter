@@ -15,7 +15,7 @@ class CustomScroll extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView.builder(
       scrollDirection: Axis.horizontal,
-      itemCount: products.length,
+      itemCount: 5,
       itemBuilder: (context, index) {
         final product = products[index];
         return LayoutBuilder(

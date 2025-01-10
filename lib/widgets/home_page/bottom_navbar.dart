@@ -54,7 +54,7 @@ class _BottomNavbarState extends State<BottomNavbar> {
               onTap: onItemTapped,
               elevation: 0,
               backgroundColor: AppColors.primaryBackground,
-              selectedItemColor: Colors.orange,
+              selectedItemColor: AppColors.buttonBlack,
               unselectedItemColor: Colors.grey,
               showSelectedLabels: true,
               showUnselectedLabels: true,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:prueba_final_flutter/constants/app_colors.dart';
 
 class DetailCustomAppBar extends StatelessWidget {
   const DetailCustomAppBar({super.key});
@@ -6,7 +7,7 @@ class DetailCustomAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.grey[50],
+      color: AppColors.secondaryBackground,
       child: FractionallySizedBox(
         alignment: Alignment(0, 1),
         heightFactor: 0.45,

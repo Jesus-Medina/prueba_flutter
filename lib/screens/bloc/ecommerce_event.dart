@@ -15,10 +15,16 @@ class AddToCartProductsEvent extends EcommerceEvent {
   const AddToCartProductsEvent({required this.product});
 }
 
-class UpdateCartQuantityEvent extends EcommerceEvent {
+class UpdateCartQuantityMinusEvent extends EcommerceEvent {
   final ProductModel product;
 
-  const UpdateCartQuantityEvent({required this.product});
+  const UpdateCartQuantityMinusEvent({required this.product});
+}
+
+class UpdateCartQuantityPlusEvent extends EcommerceEvent {
+  final ProductModel product;
+
+  const UpdateCartQuantityPlusEvent({required this.product});
 }
 
 class RemoveCartItemEvent extends EcommerceEvent {
@@ -50,4 +56,13 @@ class UpdateNavIndexEvent extends EcommerceEvent {
 
   @override
   List<Object> get props => [index];
+}
+
+class DeleteBookLocallyEvent extends EcommerceEvent {
+  final ProductModel product;
+
+  const DeleteBookLocallyEvent({required this.product});
+
+  @override
+  List<Object> get props => [product];
 }

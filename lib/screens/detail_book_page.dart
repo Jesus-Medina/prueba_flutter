@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:prueba_final_flutter/constants/app_colors.dart';
 import 'package:prueba_final_flutter/model/product_model.dart';
 import 'package:prueba_final_flutter/widgets/detail_book/book_description.dart';
 import 'package:prueba_final_flutter/widgets/detail_book/detail_custom_app_bar.dart';
@@ -15,7 +16,7 @@ class DetailBookPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[50],
+      backgroundColor: AppColors.secondaryBackground,
       body: _buildContentSections(context),
     );
   }

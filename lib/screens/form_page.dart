@@ -10,7 +10,15 @@ class FormPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.primaryBackground,
-      body: _buildContentSections(context),
+      body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: NetworkImage(
+                "https://plus.unsplash.com/premium_photo-1672944876342-4090164e1c04?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"),
+            fit: BoxFit.cover,
+          ),
+        ),
+        child: _buildContentSections(context)),
     );
   }
 

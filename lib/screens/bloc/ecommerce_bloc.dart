@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:prueba_final_flutter/data/data.dart';
 import 'package:prueba_final_flutter/model/product_model.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:prueba_final_flutter/services/firebase_services.dart';
@@ -12,7 +13,8 @@ class EcommerceBloc extends Bloc<EcommerceEvent, EcommerceState> {
   EcommerceBloc() : super(EcommerceState.initial()) {
     on<LoadProductsEvent>(_onLoadProducts);
     on<AddToCartProductsEvent>(_addToCartProductsEvent);
-    on<UpdateCartQuantityEvent>(_updateCartQuantityEvent);
+    on<UpdateCartQuantityMinusEvent>(_updateCartQuantityMinusEvent);
+    on<UpdateCartQuantityPlusEvent>(_updateCartQuantityPlusEvent);
     on<RemoveCartItemEvent>(_removeCartItemEvent);
     on<AddToFavoritesProductsEvent>(_addToFavoritesProductsEvent);
     on<AddBookEvent>(_addBookEvent);
@@ -24,7 +26,9 @@ class EcommerceBloc extends Bloc<EcommerceEvent, EcommerceState> {
     emit(state.copyWith(homeScreenState: HomeScreenState.loading));
 
     try {
-      final products = await _firebaseService.getBooks();
+      final serverProducts = await _firebaseService.getBooks();
+      LocalDataService.initializeFromServer(serverProducts);
+      final products = LocalDataService.getBooks();
       emit(state.copyWith(
           homeScreenState: HomeScreenState.success, products: products));
     } catch (e) {
@@ -58,8 +62,8 @@ class EcommerceBloc extends Bloc<EcommerceEvent, EcommerceState> {
     emit(state.copyWith(cart: updateCart));
   }
 
-  void _updateCartQuantityEvent(
-      UpdateCartQuantityEvent event, Emitter<EcommerceState> emit) {
+  void _updateCartQuantityMinusEvent(
+      UpdateCartQuantityMinusEvent event, Emitter<EcommerceState> emit) {
     final List<ProductModel> updateCart = state.cart.map((product) {
       if (product.id == event.product.id) {
         return product.copyWith(quantity: product.quantity - 1);
@@ -70,6 +74,18 @@ class EcommerceBloc extends Bloc<EcommerceEvent, EcommerceState> {
     if (event.product.quantity == 1) {
       updateCart.removeWhere((product) => product.id == event.product.id);
     }
+
+    emit(state.copyWith(cart: updateCart));
+  }
+
+  void _updateCartQuantityPlusEvent(
+      UpdateCartQuantityPlusEvent event, Emitter<EcommerceState> emit) {
+    final List<ProductModel> updateCart = state.cart.map((product) {
+      if (product.id == event.product.id) {
+        return product.copyWith(quantity: product.quantity + 1);
+      }
+      return product;
+    }).toList();
 
     emit(state.copyWith(cart: updateCart));
   }
@@ -85,7 +101,10 @@ class EcommerceBloc extends Bloc<EcommerceEvent, EcommerceState> {
       AddToFavoritesProductsEvent event, Emitter<EcommerceState> emit) {
     final List<ProductModel> updateProducts = state.products.map((product) {
       if (product.id == event.product.id) {
-        return product.copyWith(isFavorite: !product.isFavorite);
+        final updatedProduct =
+            product.copyWith(isFavorite: !product.isFavorite);
+        LocalDataService.updateBook(updatedProduct);
+        return updatedProduct;
       }
       return product;
     }).toList();
@@ -120,7 +139,8 @@ class EcommerceBloc extends Bloc<EcommerceEvent, EcommerceState> {
 
     try {
       await _firebaseService.addBook(newBook);
-      final products = await _firebaseService.getBooks();
+      LocalDataService.addBook(newBook);
+      final products = LocalDataService.getBooks();
       emit(state.copyWith(products: products));
     } catch (e) {
       print('Error adding book: $e');

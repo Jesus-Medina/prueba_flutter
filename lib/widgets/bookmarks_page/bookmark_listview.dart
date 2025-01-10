@@ -93,7 +93,7 @@ Widget _buildItem(
                         AddToFavoritesProductsEvent(product: favorites[index]),
                       );
                 },
-                child: Icon(Icons.bookmark, color: Colors.teal)),
+                child: Icon(Icons.bookmark, color: AppColors.buttonRed)),
           ),
         )
       ],
