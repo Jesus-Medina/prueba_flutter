@@ -63,23 +63,29 @@ class CustomScroll extends StatelessWidget {
               ),
             ),
             SizedBox(height: 10),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  product.author,
-                  style: TextStyle(color: Colors.grey[700], fontSize: 11),
-                ),
-                SizedBox(
-                  width: constraints.maxHeight * 0.463,
-                  child: Text(
-                    product.title,
-                    style: TextStyle(color: Colors.black, fontSize: 15),
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
+            FractionallySizedBox(
+              widthFactor: 0.85,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  FittedBox(
+                    fit: BoxFit.scaleDown,
+                    child: Text(
+                      product.author,
+                      style: TextStyle(color: Colors.grey[700], fontSize: 11),
+                    ),
                   ),
-                ),
-              ],
+                  SizedBox(
+                    width: constraints.maxHeight * 0.463,
+                    child: Text(
+                      product.title,
+                      style: TextStyle(color: Colors.black, fontSize: 15),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ),
+                ],
+              ),
             ),
           ],
         ),
