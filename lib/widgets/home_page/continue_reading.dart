@@ -8,11 +8,22 @@ class ContinueReading extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black26,
+            offset: Offset(0, 0),
+            blurRadius: 5,
+            spreadRadius: 1,
+          ),
+        ],
+        color: AppColors.primaryBackground,
         image: DecorationImage(
-            image: NetworkImage(
-              "https://plus.unsplash.com/premium_photo-1672944876342-4090164e1c04?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-            ),
-            fit: BoxFit.cover),
+          image: NetworkImage(
+            "https://i.ibb.co/1qBCJ1N/wmremove-transformed-removebg-preview.png",
+          ),
+          fit: BoxFit.cover,
+          alignment: Alignment(-3.5, 0),
+        ),
         borderRadius: BorderRadius.only(
             topLeft: Radius.circular(30), topRight: Radius.circular(30)),
       ),
@@ -26,25 +37,25 @@ class ContinueReading extends StatelessWidget {
               children: [
                 Icon(
                   Icons.horizontal_rule,
-                  color: AppColors.primaryBackground,
+                  color: AppColors.buttonBlack,
                   size: 30,
                 )
               ],
             ),
-            const Row(
+            Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
                   'Continue Reading',
                   style: TextStyle(
-                    color: AppColors.primaryBackground,
+                    color: AppColors.buttonBlack,
                     fontSize: 18,
-                    fontWeight: FontWeight.bold,
+                    fontWeight: FontWeight.w900,
                   ),
                 ),
                 Icon(
                   Icons.more_horiz,
-                  color: AppColors.primaryBackground,
+                  color: AppColors.buttonBlack,
                 ),
               ],
             ),
@@ -52,16 +63,23 @@ class ContinueReading extends StatelessWidget {
             Container(
               padding: EdgeInsets.all(15),
               decoration: BoxDecoration(
-                  color: AppColors.primaryBackground,
-                  borderRadius: BorderRadius.circular(20)),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black26,
+                      offset: Offset(0, 0),
+                      blurRadius: 5,
+                      spreadRadius: 1,
+                    ),
+                  ],
+                  color: AppColors.secondaryBackground,
+                  borderRadius: BorderRadius.circular(10)),
               child: Row(
                 children: [
                   Container(
-                    width: 45,
+                    width: 35,
                     height: 45,
                     decoration: BoxDecoration(
                       color: AppColors.primaryBackground,
-                      borderRadius: BorderRadius.circular(8),
                       image: const DecorationImage(
                         image: NetworkImage(
                             "https://m.media-amazon.com/images/I/611LVKy2PBL._SL1200_.jpg"),
@@ -77,9 +95,8 @@ class ContinueReading extends StatelessWidget {
                         const Text(
                           'La Mujer Rota',
                           style: TextStyle(
-                            color: Colors.black,
+                            color: AppColors.buttonBlack,
                             fontSize: 14,
-                            fontWeight: FontWeight.w500,
                           ),
                         ),
                         const SizedBox(height: 4),
@@ -94,7 +111,7 @@ class ContinueReading extends StatelessWidget {
                             Text(
                               '4.7',
                               style: TextStyle(
-                                color: Colors.black,
+                                color: AppColors.buttonBlack,
                                 fontSize: 12,
                               ),
                             ),
@@ -111,7 +128,7 @@ class ContinueReading extends StatelessWidget {
                       children: [
                         CircularProgressIndicator(
                           value: 0.65, // 65%
-                          backgroundColor: AppColors.shadowColor,
+                          backgroundColor: Colors.red[200],
                           valueColor: AlwaysStoppedAnimation<Color>(
                               AppColors.buttonRed),
                           strokeWidth: 3,
@@ -119,7 +136,7 @@ class ContinueReading extends StatelessWidget {
                         Text(
                           '65%',
                           style: TextStyle(
-                            color: AppColors.buttonRed,
+                            color: AppColors.buttonBlack,
                             fontSize: 12,
                             fontWeight: FontWeight.bold,
                           ),

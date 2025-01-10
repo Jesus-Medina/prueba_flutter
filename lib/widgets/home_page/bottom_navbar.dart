@@ -42,6 +42,14 @@ class _BottomNavbarState extends State<BottomNavbar> {
       builder: (context, state) {
         return Container(
           decoration: BoxDecoration(
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black26,
+                offset: const Offset(0, 0),
+                blurRadius: 10,
+                spreadRadius: 2,
+              ),
+            ],
             borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(30), topRight: Radius.circular(30)),
             color: AppColors.primaryBackground,
