@@ -49,5 +49,6 @@ class EcommerceState extends Equatable {
   }
 
   @override
-  List<Object> get props => [products, cart, favorites, homeScreenState, currentNavIndex];
+  List<Object> get props =>
+      [products, cart, favorites, homeScreenState, currentNavIndex];
 }

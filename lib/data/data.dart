@@ -26,8 +26,7 @@ class LocalDataService {
     }
   }
 
-  // Eliminar libro localmente
-  static void deleteBook(String bookId) {
-    _books.removeWhere((book) => book.id == bookId);
+  static void deleteBook(ProductModel book) {
+    _books.removeWhere((b) => b.id == book.id);
   }
 }

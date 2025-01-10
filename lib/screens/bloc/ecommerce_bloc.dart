@@ -19,6 +19,8 @@ class EcommerceBloc extends Bloc<EcommerceEvent, EcommerceState> {
     on<AddToFavoritesProductsEvent>(_addToFavoritesProductsEvent);
     on<AddBookEvent>(_addBookEvent);
     on<UpdateNavIndexEvent>(_updateNavIndexEvent);
+    on<DeleteBookLocallyEvent>(
+        _deleteBookLocallyEvent); // Nuevo evento registrado
   }
 
   void _onLoadProducts(
@@ -143,7 +145,7 @@ class EcommerceBloc extends Bloc<EcommerceEvent, EcommerceState> {
       final products = LocalDataService.getBooks();
       emit(state.copyWith(products: products));
     } catch (e) {
-      print('Error adding book: $e');
+      //(print('Error adding book: $e');
     }
   }
 
@@ -151,4 +153,26 @@ class EcommerceBloc extends Bloc<EcommerceEvent, EcommerceState> {
       UpdateNavIndexEvent event, Emitter<EcommerceState> emit) {
     emit(state.copyWith(currentNavIndex: event.index));
   }
+
+// En EcommerceBloc, actualiza el método _deleteBookLocallyEvent:
+void _deleteBookLocallyEvent(
+    DeleteBookLocallyEvent event, Emitter<EcommerceState> emit) {
+  // Eliminar de LocalDataService
+  LocalDataService.deleteBook(event.product);
+  
+  // Actualizar la lista de productos en el estado
+  final List<ProductModel> updatedProducts = state.products
+      .where((product) => product.id != event.product.id)
+      .toList();
+  
+  // También debemos remover el libro de favoritos si está ahí
+  final List<ProductModel> updatedFavorites = state.favorites
+      .where((product) => product.id != event.product.id)
+      .toList();
+  
+  emit(state.copyWith(
+    products: updatedProducts,
+    favorites: updatedFavorites,
+  ));
+}
 }

@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:prueba_final_flutter/constants/app_colors.dart';
 
 class MoreCustomAppbar extends StatelessWidget {
-  const MoreCustomAppbar({super.key});
+  final VoidCallback onMoreTap;
+  const MoreCustomAppbar({super.key, required this.onMoreTap});
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +33,8 @@ class MoreCustomAppbar extends StatelessWidget {
             ),
             IconButton(
               icon: Icon(Icons.more_horiz),
-              onPressed: () {},
+              onPressed: onMoreTap,
+              
             ),
           ],
         ),
