@@ -1,9 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:prueba_final_flutter/constants/app_colors.dart';
 
-class MoreCustomAppbar extends StatelessWidget {
+class MoreCustomAppbar extends StatefulWidget {
   final VoidCallback onMoreTap;
   const MoreCustomAppbar({super.key, required this.onMoreTap});
+
+  @override
+  MoreCustomAppbarState createState() => MoreCustomAppbarState();
+}
+
+class MoreCustomAppbarState extends State<MoreCustomAppbar> {
+  bool _isSelected = false;
+
+  void _toggleSelection() {
+    setState(() {
+      _isSelected = !_isSelected;
+    });
+    widget.onMoreTap();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -32,9 +46,13 @@ class MoreCustomAppbar extends StatelessWidget {
               ),
             ),
             IconButton(
-              icon: Icon(Icons.more_horiz),
-              onPressed: onMoreTap,
-              
+              icon: Icon(
+                Icons.more_horiz,
+                color: _isSelected
+                    ? AppColors.buttonRed
+                    : Colors.black, // Cambia el color cuando está seleccionado
+              ),
+              onPressed: _toggleSelection,
             ),
           ],
         ),

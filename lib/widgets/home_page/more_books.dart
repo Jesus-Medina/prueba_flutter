@@ -23,7 +23,8 @@ class MoreBooks extends StatelessWidget {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => MoreBookPage(products: products)),
+                MaterialPageRoute(
+                    builder: (context) => MoreBookPage(products: products)),
               );
             },
             child: Text(

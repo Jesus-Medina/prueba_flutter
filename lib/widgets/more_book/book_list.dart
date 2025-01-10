@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:prueba_final_flutter/constants/app_colors.dart';
 import 'package:prueba_final_flutter/model/product_model.dart';
 import 'package:prueba_final_flutter/screens/bloc/ecommerce_bloc.dart';
 import 'package:prueba_final_flutter/screens/detail_book_page.dart';
@@ -18,14 +19,14 @@ class BookList extends StatelessWidget {
   Widget build(BuildContext context) {
     return FractionallySizedBox(
       widthFactor: 0.95,
-      heightFactor: 0.95,
+      alignment: Alignment.center,
       child: GridView.builder(
-        padding: EdgeInsets.symmetric(horizontal: 16, vertical: 20),
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: MediaQuery.of(context).size.width > 600 ? 3 : 2,
-          crossAxisSpacing: 16,
-          mainAxisSpacing: 16,
-          childAspectRatio: 0.7,
+          crossAxisSpacing: 14,
+          mainAxisSpacing: 7,
+          childAspectRatio:
+              160 / 270, // Ajusta la proporción de aspecto del hijo
         ),
         itemCount: products.length,
         itemBuilder: (context, index) {
@@ -51,64 +52,77 @@ class BookList extends StatelessWidget {
               );
             }
           },
-          child: Container(
-            decoration: BoxDecoration(
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.grey[300]!,
-                  blurRadius: 10,
-                  offset: Offset(0, 0),
+          child: Center(
+            child: Container(
+              width: 160, // Establece el ancho deseado de la tarjeta
+              height: 270, // Establece el alto deseado de la tarjeta
+              decoration: BoxDecoration(
+                color: AppColors.secondaryBackground,
+                border: Border.all(
+                  color: AppColors.buttonBlack,
+                  width: 0.2,
                 ),
-              ],
-            ),
-            child: Card(
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(0),
+                boxShadow: [
+                  BoxShadow(
+                    color: AppColors.shadowColor,
+                    blurRadius: 10,
+                    offset: Offset(0, 0),
+                  ),
+                ],
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  AspectRatio(
-                    aspectRatio: 1,
+                  Expanded(
+                    flex: 8,
                     child: Container(
                       decoration: BoxDecoration(
-                        color: Colors.grey[200],
+                        color: AppColors.secondaryBackground,
                         image: DecorationImage(
                           image: NetworkImage(product.image),
-                          fit: BoxFit.cover,
+                          fit: BoxFit.fill,
                         ),
                       ),
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        FittedBox(
+                  Expanded(
+                    flex: 1,
+                    child: FractionallySizedBox(
+                      widthFactor: 0.95,
+                      child: FittedBox(
+                        fit: BoxFit.scaleDown,
+                        alignment: Alignment.bottomLeft,
+                        child: Padding(
+                          padding: EdgeInsets.only(left: 4),
                           child: Text(
                             product.title,
                             style: TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.w500,
                             ),
-                            maxLines: 2,
-                            overflow: TextOverflow.ellipsis,
                           ),
                         ),
-                        SizedBox(height: 4),
-                        FittedBox(
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    flex: 1,
+                    child: FractionallySizedBox(
+                      widthFactor: 0.95,
+                      child: FittedBox(
+                        fit: BoxFit.scaleDown,
+                        alignment: Alignment.topLeft,
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 4),
                           child: Text(
                             product.author,
                             style: TextStyle(
                               fontSize: 12,
                               color: Colors.grey[600],
                             ),
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
                           ),
                         ),
-                      ],
+                      ),
                     ),
                   ),
                 ],
